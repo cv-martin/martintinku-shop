@@ -184,9 +184,15 @@
   padding-top: 4rem;
 }
 
-.passion-row {
-  align-items: center;
-  gap: 3rem;
+.passion-row-stacked {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.passion-intro-grid {
+  margin-top: 1.25rem;
+  gap: 2.5rem;
 }
 
 .passion-text-wrapper {
@@ -201,20 +207,20 @@
   }
   
   h2 {
-    font-size: clamp(1.6rem, 3vw, 2.2rem);
-    margin-bottom: 1.25rem;
+    font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+    margin-bottom: 0.5rem;
     color: var(--text);
   }
 
   .accent-paragraph {
-    font-size: 1.1rem;
+    font-size: 1.15rem;
     font-family: var(--font-heading);
     color: var(--primary);
     font-weight: 600;
     line-height: 1.6;
     border-left: 3px solid var(--primary);
     padding-left: 1rem;
-    margin-bottom: 1.25rem;
+    margin: 0;
   }
 
   p {
@@ -222,14 +228,18 @@
     color: var(--text-secondary);
     margin-bottom: 1rem;
     line-height: 1.7;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
 }
 
 .passion-gallery-wrapper {
-  .gallery-grid {
+  .gallery-grid-three {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.25rem;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1.5rem;
   }
 
   .gallery-item {
@@ -237,7 +247,7 @@
     border-radius: var(--radius-md);
     overflow: hidden;
     box-shadow: var(--shadow-md);
-    border: 4px solid #fff;
+    border: 5px solid #fff;
     background: var(--border-light);
     aspect-ratio: 3/4;
 
@@ -254,13 +264,13 @@
 
     .gallery-label {
       position: absolute;
-      bottom: 8px;
-      left: 8px;
+      bottom: 10px;
+      left: 10px;
       background: rgba(28,16,8,0.75);
       color: #fff;
-      font-size: 0.7rem;
+      font-size: 0.72rem;
       font-weight: 600;
-      padding: 0.25rem 0.5rem;
+      padding: 0.25rem 0.55rem;
       border-radius: 4px;
       pointer-events: none;
     }
@@ -269,12 +279,14 @@
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
-  .passion-row {
-    flex-direction: column;
-    gap: 2rem;
+  .passion-intro-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
   }
-  .passion-gallery-wrapper .gallery-grid {
-    grid-template-columns: 1fr 1fr;
+  .passion-gallery-wrapper .gallery-grid-three {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
   }
 }
+
 
