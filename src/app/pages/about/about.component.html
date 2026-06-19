@@ -107,6 +107,44 @@
       </div>
     </div>
 
+    <!-- Our 2026 Vision Section -->
+    <div class="vision-section">
+      <div class="section-title">
+        <span class="eyebrow-label">Aspirational Roadmap</span>
+        <h2>Our 2026 Vision</h2>
+        <p>A look at where we aim to go as we validate and refine our recipes and processes.</p>
+      </div>
+
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-badge">Q1–Q2 2026</div>
+          <div class="timeline-panel">
+            <h3>Kitchen Validation</h3>
+            <p class="timeline-description">Testing small-batch recipes, packaging, labeling, and preorder interest.</p>
+            <span class="status-indicator">Exploring commercial kitchen options</span>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-badge">Q3 2026</div>
+          <div class="timeline-panel">
+            <h3>Sourcing Exploration</h3>
+            <p class="timeline-description">Exploring trusted ingredient sourcing and consistent spice quality.</p>
+            <span class="status-indicator">Studying direct sourcing opportunities</span>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-badge">Q4 2026</div>
+          <div class="timeline-panel">
+            <h3>Availability Expansion</h3>
+            <p class="timeline-description">Evaluating compliant delivery and shipping options based on customer demand and location.</p>
+            <span class="status-indicator">Evaluating compliant shipping options by location</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- Founder's Signature Quote Card -->
     <div class="founder-quote-card card animate-fade-in">
       <div class="grid-2 quote-layout">
@@ -124,6 +162,145 @@
           </div>
         </div>
       </div>
+    </div>
+
+    <!-- Flavor Preference Survey -->
+    <div class="survey-container card">
+      <div class="survey-header">
+        <span class="eyebrow-label">Curriculum Input</span>
+        <h2>Flavor Preference Survey</h2>
+        <p class="survey-intro">
+          Help us build the perfect taste profile for our future offerings. Share your preferences below to shape the upcoming batches.
+        </p>
+        <div class="validation-note">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle-fill" viewBox="0 0 16 16">
+            <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
+          </svg>
+          This survey is for early product validation. Submissions are stored locally in this browser for demo purposes until a production form is connected.
+        </div>
+      </div>
+
+      <!-- Survey Success State -->
+      <div *ngIf="isSubmitted && isSubmissionSuccess" class="survey-success-state animate-fade-in">
+        <div class="report-card">
+          <div class="report-card-header">
+            <div class="school-header">
+              <h3>HEADMASTER AMMA'S ACADEMY</h3>
+              <p>Austin, Texas — Est. 2026</p>
+            </div>
+            <div class="grade-badge">A+</div>
+          </div>
+          
+          <div class="report-card-body">
+            <h4>Official Taster Registration</h4>
+            <p class="success-message">
+              Thank you! Your preferences have been successfully recorded in the local registry. You have helped shape the future syllabus of Headmaster Amma's kitchen.
+            </p>
+            
+            <div class="perk-box">
+              <span class="perk-label">FUTURE LAUNCH PERK CODE</span>
+              <div class="coupon-code">CLASS2026</div>
+              <p class="perk-desc">You're on the early taster list. Future launch perk code: CLASS2026.</p>
+            </div>
+          </div>
+
+          <div class="report-card-footer">
+            <button class="btn btn-secondary btn-sm" (click)="resetForm()">Take Survey Again</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Survey Form State -->
+      <form *ngIf="!isSubmitted" [formGroup]="surveyForm" (ngSubmit)="onSubmit()" class="survey-form">
+        
+        <!-- Spice Preference -->
+        <div class="form-group-custom">
+          <label class="form-label font-bold">1. Select Your Preferred Spice Level *</label>
+          <p class="field-desc">How much traditional Andhra heat can you comfortably handle?</p>
+          <div class="radio-group">
+            <label class="radio-label">
+              <input type="radio" formControlName="spicePreference" value="Balanced & Tangy">
+              <span class="custom-radio"></span>
+              <span class="radio-text">
+                <strong>Standard Grade</strong>
+                <span>Mild, balanced heat with a tangy punch</span>
+              </span>
+            </label>
+            <label class="radio-label">
+              <input type="radio" formControlName="spicePreference" value="Traditional Burn">
+              <span class="custom-radio"></span>
+              <span class="radio-text">
+                <strong>First Class</strong>
+                <span>Authentic, rich Andhra heat with complex spices</span>
+              </span>
+            </label>
+            <label class="radio-label">
+              <input type="radio" formControlName="spicePreference" value="Extreme Heat">
+              <span class="custom-radio"></span>
+              <span class="radio-text">
+                <strong>Headmaster's Honors</strong>
+                <span>Extra hot Guntur heat for serious spice enthusiasts</span>
+              </span>
+            </label>
+          </div>
+          <div *ngIf="surveyForm.get('spicePreference')?.touched && surveyForm.get('spicePreference')?.invalid" class="validation-error">
+            Please select a spice level preference.
+          </div>
+        </div>
+
+        <!-- Wishlist Checkboxes -->
+        <div class="form-group-custom">
+          <label class="form-label font-bold">2. Which products are you most excited to try? (Select all that apply)</label>
+          <p class="field-desc">We are exploring these flavors based on authentic Andhra family recipes.</p>
+          <div class="checkbox-grid" formGroupName="wishlistProducts">
+            <label class="checkbox-label" *ngFor="let opt of wishlistOptions">
+              <input type="checkbox" [formControlName]="opt.id">
+              <span class="custom-checkbox"></span>
+              <span class="checkbox-text">{{ opt.label }}</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Purchase Frequency -->
+        <div class="form-group-custom">
+          <label class="form-label font-bold">3. How often do you buy pickles or spice powders? *</label>
+          <select formControlName="purchaseFrequency" class="form-select">
+            <option value="" disabled selected>Select frequency</option>
+            <option value="Weekly">Weekly (Always stocked in the pantry)</option>
+            <option value="Monthly">Monthly (Regular batch replenishments)</option>
+            <option value="Seasonal">Seasonal (Only for festivals or cold weather)</option>
+            <option value="Rarely">Rarely / As gifts only</option>
+          </select>
+          <div *ngIf="surveyForm.get('purchaseFrequency')?.touched && surveyForm.get('purchaseFrequency')?.invalid" class="validation-error">
+            Please select your purchase frequency.
+          </div>
+        </div>
+
+        <!-- Optional Email -->
+        <div class="form-group-custom">
+          <label class="form-label font-bold">4. Email Address (Optional)</label>
+          <p class="field-desc">Leave your email to get notified when the next local batch is ready for testing.</p>
+          <input type="email" formControlName="email" class="form-input" placeholder="e.g. name@example.com">
+          <div *ngIf="surveyForm.get('email')?.touched && surveyForm.get('email')?.invalid" class="validation-error">
+            Please enter a valid email address.
+          </div>
+        </div>
+
+        <!-- Optional Feedback -->
+        <div class="form-group-custom">
+          <label class="form-label font-bold">5. What makes a home-style pickle authentic to you? (Optional)</label>
+          <textarea formControlName="feedback" class="form-textarea" rows="3" placeholder="Tell Amma what flavors or childhood memories you are looking for..."></textarea>
+        </div>
+
+        <!-- Privacy & Submit -->
+        <div class="survey-footer">
+          <p class="privacy-note">
+            Do not enter sensitive personal information. This MVP stores survey data locally in your browser only.
+          </p>
+          <button type="submit" class="btn btn-primary btn-submit">Submit Preferences</button>
+        </div>
+
+      </form>
     </div>
 
     <!-- Preorder Pitch Banner -->
