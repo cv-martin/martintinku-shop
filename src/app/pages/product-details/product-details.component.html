@@ -1,0 +1,127 @@
+<div class="container details-page-container animate-fade-in" *ngIf="product">
+  <!-- Back Button Link -->
+  <a routerLink="/products" class="back-link">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="back-icon">
+      <path d="M19 12H5M12 19l-7-7 7-7" />
+    </svg>
+    <span>Back to Catalog</span>
+  </a>
+
+  <!-- Main Product Detail Box -->
+  <div class="product-details-grid">
+    <!-- Left Column: Image -->
+    <div class="details-image-box">
+      <div class="image-wrapper">
+        <img [src]="product.imagePath" [alt]="product.name" class="detail-image">
+        <div class="illustrative-overlay">Illustrative Image</div>
+      </div>
+      <p class="image-caption">Illustrative brand image inspired by Amma's kitchen.</p>
+    </div>
+
+    <!-- Right Column: Details Content -->
+    <div class="details-content-box">
+      <span class="category-badge badge" [class.badge-pickle]="product.category === 'Pickle'" [class.badge-podi]="product.category === 'Podi'">
+        {{ product.category }}
+      </span>
+      
+      <h1 class="details-title">{{ product.name }}</h1>
+
+      <!-- Spice Rating -->
+      <div class="details-spice">
+        <span class="spice-label">Spice Intensity:</span>
+        <div class="chillies-row">
+          @for (chilli of getChilliesArray(product.spiceLevel); track $index) {
+            <svg class="chilli-icon" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M19.5 12c-.22 0-.44-.04-.66-.11-1.07-.35-2.07-.86-2.97-1.5-.72-.51-1.39-1.09-1.99-1.74-.6-.65-1.1-1.37-1.5-2.14-.66-.12-1.3-.32-1.92-.58-.87-.37-1.68-.88-2.43-1.5-.47-.39-1.03-.6-1.62-.6-.28 0-.57.05-.85.16L4.54 4.54c-.69.27-1.12.92-1.12 1.66 0 .54.24 1.05.65 1.41l5.48 4.79c1 .87 1.63 2.1 1.77 3.42.14 1.33.84 2.52 1.95 3.3l5.52 3.86c.26.18.57.28.89.28.83 0 1.5-.67 1.5-1.5 0-.27-.07-.54-.21-.77L19.5 12zM8.33 2.1c-.24 0-.47.1-.64.27l-.64.64c-.28.28-.28.72 0 1l.73.73c.48.48 1.15.76 1.84.76.69 0 1.36-.28 1.84-.76l.73-.73c.28-.28.28-.72 0-1l-.64-.64c-.18-.17-.41-.27-.64-.27h-2.58z"/>
+            </svg>
+          }
+        </div>
+        <span class="spice-text" [class.extra-hot]="product.spiceLevel === 'Extra Hot'">{{ product.spiceLevel }}</span>
+      </div>
+
+      <p class="details-short-desc"><strong>Summary:</strong> {{ product.shortDescription }}</p>
+      <div class="details-description">
+        <p>{{ product.description }}</p>
+      </div>
+
+      <!-- Action Area -->
+      <div class="details-actions">
+        <a [routerLink]="['/preorder']" [queryParams]="{ productId: product.id }" class="btn btn-primary btn-lg flex-1">
+          Register Preorder Interest
+        </a>
+        <a [href]="'https://wa.me/15125550199?text=Hi%20Amma%2C%20I%27m%20interested%20in%20preordering%20the%20' + product.name" target="_blank" class="btn btn-whatsapp btn-lg">
+          <svg class="wa-btn-icon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.513 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.457L0 24zm6.59-3.483l.362.215c1.5.892 3.242 1.362 5.039 1.363 5.437 0 9.858-4.403 9.862-9.82 0-2.625-1.023-5.092-2.884-6.956C17.16 3.456 14.695 2.432 12.01 2.43c-5.442 0-9.863 4.404-9.866 9.821 0 1.892.493 3.738 1.428 5.378l.24.417-1.01 3.694 3.785-.992zm11.36-7.854c-.3-.15-1.774-.875-2.049-.976-.275-.101-.475-.15-.675.15-.2.3-.775.976-.95 1.176-.175.2-.35.225-.65.075-.3-.15-1.267-.467-2.414-1.49-1.128-1.007-1.89-2.25-2.112-2.63-.223-.38-.024-.585.127-.733.135-.133.3-.35.45-.525.15-.175.2-.3.3-.5.1-.2.05-.375-.025-.525-.075-.15-.675-1.625-.925-2.225-.244-.589-.493-.51-.675-.52-.172-.007-.368-.009-.565-.009-.196 0-.517.074-.788.374-.27.3-1.03 1.008-1.03 2.459 0 1.45 1.055 2.852 1.202 3.052.148.2 2.077 3.17 5.031 4.45 2.112.915 2.91.865 3.945.714 1.045-.153 2.775-.875 3.165-1.725.39-.85.39-1.575.275-1.725-.115-.15-.415-.3-.715-.45z"/>
+          </svg>
+          <span>WhatsApp Inquiry</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Detailed Specifications Grid -->
+  <div class="specifications-grid">
+    <!-- Ingredients Panel -->
+    <div class="spec-card">
+      <h3>Ingredients List</h3>
+      <ul class="ingredients-list">
+        @for (ingredient of product.ingredients; track ingredient) {
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="bullet-icon">
+              <polyline points="20 6 9 17 4 12" />
+            </svg>
+            <span>{{ ingredient }}</span>
+          </li>
+        }
+      </ul>
+    </div>
+
+    <!-- Recommendations & Pairings -->
+    <div class="spec-card">
+      <h3>Recommended Pairings</h3>
+      <p class="spec-info-text">
+        These pickles and podis are versatile, but Amma highly recommends serving them with:
+      </p>
+      <div class="pairings-tags">
+        @for (pair of product.bestWith; track pair) {
+          <span class="pairing-badge">{{ pair }}</span>
+        }
+      </div>
+    </div>
+
+    <!-- Storage & Shelf Life -->
+    <div class="spec-card">
+      <h3>Shelf Life & Storage</h3>
+      <table class="details-table">
+        <tr>
+          <th>Estimated Shelf Life</th>
+          <td>{{ product.shelfLife }}</td>
+        </tr>
+        <tr>
+          <th>Storage Standard</th>
+          <td>{{ product.storageInstructions }}</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- Allergen & Status Disclaimers -->
+  <div class="disclaimers-row">
+    <div class="allergen-box">
+      <div class="allergen-title">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="warning-icon">
+          <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0zM12 9v4M12 17h.01" />
+        </svg>
+        <h4>Classroom-Standard Allergen Advisory</h4>
+      </div>
+      <p>{{ product.allergenWarning }}</p>
+    </div>
+
+    <div class="compliance-box">
+      <h4>Preorder & Availability Status</h4>
+      <p>
+        Currently in validation/preorder stage. Availability, shipping, packaging, and regulatory compliance vary by location. Jars are sold under Austin local pickup protocols.
+      </p>
+    </div>
+  </div>
+</div>

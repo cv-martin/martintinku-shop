@@ -1,0 +1,35 @@
+<header class="header">
+  <div class="header-container">
+    <a routerLink="/" class="logo" (click)="closeMobileMenu()">
+      <span class="logo-text">Headmaster Amma's</span>
+      <span class="logo-subtext">Kitchen</span>
+    </a>
+
+    <nav class="desktop-nav">
+      <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
+      <a routerLink="/products" routerLinkActive="active">Products</a>
+      <a routerLink="/about" routerLinkActive="active">About Amma</a>
+      <a routerLink="/faq" routerLinkActive="active">FAQ</a>
+      <a routerLink="/contact" routerLinkActive="active">Contact</a>
+      <a routerLink="/preorder" routerLinkActive="active" class="nav-btn">Preorder</a>
+    </nav>
+
+    <button class="mobile-toggle" (click)="toggleMobileMenu()" aria-label="Toggle menu">
+      <span class="bar" [class.open]="isMobileMenuOpen"></span>
+      <span class="bar" [class.open]="isMobileMenuOpen"></span>
+      <span class="bar" [class.open]="isMobileMenuOpen"></span>
+    </button>
+  </div>
+
+  <div class="mobile-drawer" [class.open]="isMobileMenuOpen">
+    <nav class="mobile-nav">
+      <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" (click)="closeMobileMenu()">Home</a>
+      <a routerLink="/products" routerLinkActive="active" (click)="closeMobileMenu()">Products</a>
+      <a routerLink="/about" routerLinkActive="active" (click)="closeMobileMenu()">About Amma</a>
+      <a routerLink="/faq" routerLinkActive="active" (click)="closeMobileMenu()">FAQ</a>
+      <a routerLink="/contact" routerLinkActive="active" (click)="closeMobileMenu()">Contact</a>
+      <a routerLink="/preorder" class="btn btn-primary" (click)="closeMobileMenu()">Preorder</a>
+    </nav>
+  </div>
+  <div class="drawer-overlay" *ngIf="isMobileMenuOpen" (click)="closeMobileMenu()"></div>
+</header>

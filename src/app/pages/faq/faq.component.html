@@ -1,0 +1,45 @@
+<section class="faq-header">
+  <div class="container header-content">
+    <span class="eyebrow">Clear and Transparent</span>
+    <h1>Frequently Asked Questions</h1>
+    <p>Answers to questions about compliance, ingredients, shelf life, and preorders.</p>
+  </div>
+</section>
+
+<section class="section faq-section">
+  <div class="container max-width-container">
+    
+    <!-- Accordion Wrapper -->
+    <div class="accordion-list">
+      @for (faq of faqs; track $index) {
+        <div class="accordion-item" [class.open]="faq.isOpen">
+          <button class="accordion-trigger" (click)="toggleFAQ($index)" [attr.aria-expanded]="faq.isOpen">
+            <span class="faq-question">{{ faq.question }}</span>
+            <span class="faq-icon-box">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="faq-chevron">
+                <polyline points="6 9 12 15 18 9" />
+              </svg>
+            </span>
+          </button>
+          
+          <div class="accordion-content" *ngIf="faq.isOpen">
+            <p class="faq-answer">{{ faq.answer }}</p>
+          </div>
+        </div>
+      }
+    </div>
+
+    <!-- Contact Helper Box -->
+    <div class="faq-contact-box card animate-fade-in">
+      <h3>Have another question?</h3>
+      <p>Amma is always happy to explain her recipes or discuss ingredient specifications directly.</p>
+      <a href="https://wa.me/15125550199" target="_blank" class="btn btn-whatsapp">
+        <svg class="wa-btn-icon" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.513 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.457L0 24zm6.59-3.483l.362.215c1.5.892 3.242 1.362 5.039 1.363 5.437 0 9.858-4.403 9.862-9.82 0-2.625-1.023-5.092-2.884-6.956C17.16 3.456 14.695 2.432 12.01 2.43c-5.442 0-9.863 4.404-9.866 9.821 0 1.892.493 3.738 1.428 5.378l.24.417-1.01 3.694 3.785-.992zm11.36-7.854c-.3-.15-1.774-.875-2.049-.976-.275-.101-.475-.15-.675.15-.2.3-.775.976-.95 1.176-.175.2-.35.225-.65.075-.3-.15-1.267-.467-2.414-1.49-1.128-1.007-1.89-2.25-2.112-2.63-.223-.38-.024-.585.127-.733.135-.133.3-.35.45-.525.15-.175.2-.3.3-.5.1-.2.05-.375-.025-.525-.075-.15-.675-1.625-.925-2.225-.244-.589-.493-.51-.675-.52-.172-.007-.368-.009-.565-.009-.196 0-.517.074-.788.374-.27.3-1.03 1.008-1.03 2.459 0 1.45 1.055 2.852 1.202 3.052.148.2 2.077 3.17 5.031 4.45 2.112.915 2.91.865 3.945.714 1.045-.153 2.775-.875 3.165-1.725.39-.85.39-1.575.275-1.725-.115-.15-.415-.3-.715-.45z"/>
+        </svg>
+        <span>Message Amma on WhatsApp</span>
+      </a>
+    </div>
+
+  </div>
+</section>

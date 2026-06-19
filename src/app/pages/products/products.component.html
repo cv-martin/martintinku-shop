@@ -1,0 +1,59 @@
+<section class="products-header">
+  <div class="container header-content">
+    <span class="eyebrow">Amma's Master Catalog</span>
+    <h1>The Kitchen Pantry</h1>
+    <p>
+      Every single jar is prepared under the direct supervision of Amma. No chemical additives, no machine shortcuts — just genuine ingredients calibrated to classic spice levels.
+    </p>
+  </div>
+</section>
+
+<section class="section catalog-section">
+  <div class="container">
+    
+    <!-- Controls (Filter & Sort) -->
+    <div class="catalog-controls">
+      <div class="filter-tabs">
+        <button class="tab-btn" [class.active]="categoryFilter === 'All'" (click)="setCategoryFilter('All')">
+          All Products
+        </button>
+        <button class="tab-btn" [class.active]="categoryFilter === 'Pickle'" (click)="setCategoryFilter('Pickle')">
+          Pickles
+        </button>
+        <button class="tab-btn" [class.active]="categoryFilter === 'Podi'" (click)="setCategoryFilter('Podi')">
+          Podis & Spice Powders
+        </button>
+      </div>
+
+      <div class="sort-selector">
+        <label for="sortOrder" class="sort-label">Sort by:</label>
+        <select id="sortOrder" class="form-select sort-select" (change)="setSortOrder($event)">
+          <option value="name">Alphabetical (A-Z)</option>
+          <option value="spiceAsc">Spice Level: Low to High</option>
+          <option value="spiceDesc">Spice Level: High to Low</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Product Grid -->
+    @if (filteredProducts.length > 0) {
+      <div class="grid-3 animate-fade-in">
+        @for (product of filteredProducts; track product.id) {
+          <app-product-card [product]="product"></app-product-card>
+        }
+      </div>
+    } @else {
+      <!-- Empty State -->
+      <div class="empty-state">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="empty-icon">
+          <circle cx="12" cy="12" r="10" />
+          <path d="M8 15h8M9 9h.01M15 9h.01" />
+        </svg>
+        <h3>No Products Found</h3>
+        <p>We couldn't find any products matching your current filters.</p>
+        <button class="btn btn-primary" (click)="setCategoryFilter('All')">Show All Products</button>
+      </div>
+    }
+
+  </div>
+</section>

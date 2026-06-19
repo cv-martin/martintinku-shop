@@ -1,0 +1,169 @@
+.product-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  transition: all var(--duration) var(--ease);
+  box-shadow: var(--shadow-sm);
+  height: 100%;
+
+  &:hover {
+    transform: translateY(-3.5px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--primary);
+
+    .product-image { transform: scale(1.03); }
+  }
+}
+
+/* Image */
+.product-image-container {
+  position: relative;
+  height: 210px;
+  overflow: hidden;
+  background: var(--bg-warm);
+
+  .product-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.45s var(--ease);
+  }
+
+  .category-badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+  }
+
+  .illustrative-tag {
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+    background: rgba(28,16,8,0.55);
+    color: rgba(255,255,255,0.85);
+    font-size: 0.62rem;
+    padding: 0.15rem 0.45rem;
+    border-radius: 4px;
+    font-family: var(--font-body);
+  }
+}
+
+/* Content */
+.product-content {
+  padding: 1.25rem;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.product-title {
+  font-size: 1.15rem;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.25;
+}
+
+/* Spice */
+.spice-rating {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+
+  .spice-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--text-muted);
+  }
+
+  .chillies-row {
+    display: flex;
+    gap: 1px;
+  }
+
+  .chilli-icon {
+    width: 13px;
+    height: 13px;
+    color: var(--accent);
+  }
+
+  .spice-text {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--accent);
+
+    &.extra-hot {
+      background: var(--accent-soft);
+      color: var(--accent);
+      border: 1px solid var(--accent);
+      padding: 0.1rem 0.4rem;
+      border-radius: 2px;
+      text-transform: uppercase;
+      font-size: 0.65rem;
+      letter-spacing: 0.04em;
+    }
+  }
+}
+
+.product-description {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  flex-grow: 1;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin: 0;
+}
+
+/* Best With */
+.best-with {
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--border-light);
+
+  .bw-label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: var(--text-muted);
+    margin-bottom: 0.4rem;
+  }
+
+  .tags-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+  }
+
+  .pairing-tag {
+    font-size: 0.75rem;
+    background: var(--bg-warm);
+    color: var(--text-secondary);
+    border: 1px solid var(--border);
+    padding: 0.2rem 0.55rem;
+    border-radius: 4px;
+    font-weight: 500;
+  }
+}
+
+/* Actions */
+.product-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.6rem;
+  padding: 1rem 1.25rem;
+  background: var(--bg-warm);
+  border-top: 1px solid var(--border-light);
+
+  .card-btn {
+    padding: 0.6rem 0.75rem;
+    font-size: 0.82rem;
+    border-radius: var(--radius-sm);
+  }
+}

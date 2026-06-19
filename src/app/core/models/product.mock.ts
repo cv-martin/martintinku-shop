@@ -1,0 +1,88 @@
+import { Product } from './product.model';
+
+export const MOCK_PRODUCTS: Product[] = [
+  {
+    id: 'gongura-pickle',
+    name: 'Gongura Pickle',
+    category: 'Pickle',
+    shortDescription: 'Tangy sorrel leaves combined with traditional Andhra spices for an unmatched flavor burst.',
+    description: 'A staple in every Telugu household, our Gongura pickle is made from fresh, hand-picked sorrel leaves (Gongura). It is slowly simmered and infused with cold-pressed sesame oil, mustard seeds, fenugreek, and a high-heat chilli blend. The result is a perfect harmony of sour, spicy, and salty flavors that pairs wonderfully with hot rice and a spoonful of ghee.',
+    spiceLevel: 'Hot',
+    bestWith: ['Steamed Rice & Ghee', 'Pappu (Lentil Dal)', 'Dosa', 'Idly'],
+    ingredients: ['Fresh Sorrel Leaves (Gongura)', 'Cold-pressed Sesame Oil', 'Chilli Powder', 'Garlic', 'Salt', 'Mustard Seeds', 'Fenugreek Seeds', 'Turmeric'],
+    storageInstructions: 'Store in a cool, dry place. Always use a dry spoon. Do not refrigerate.',
+    shelfLife: '6 Months',
+    allergenWarning: 'Prepared in a kitchen that processes nuts and sesame. Contains mustard and garlic.',
+    imagePath: 'img/Gemini_Generated_Image_ (2).png'
+  },
+  {
+    id: 'mango-pickle',
+    name: 'Avakaya Mango Pickle',
+    category: 'Pickle',
+    shortDescription: 'Classic Andhra Avakaya. Tangy raw mangoes seasoned with heavy mustard powder and spicy chillies.',
+    description: 'The undisputed king of pickles, our Avakaya is crafted using sour, firm green mangoes chopped into precise pieces. Each piece has the inner shell intact, ensuring a satisfying crunch. Marinated with pure mustard seed powder, fiery Guntur red chillies, and cold-pressed sesame oil, this pickle is aged to perfection to develop its robust, spicy profile.',
+    spiceLevel: 'Extra Hot',
+    bestWith: ['Curd Rice', 'Steamed Rice', 'Puri', 'Upma'],
+    ingredients: ['Raw Green Mangoes', 'Cold-pressed Sesame Oil', 'Mustard Powder', 'Red Chilli Powder', 'Salt', 'Fenugreek Seeds', 'Turmeric'],
+    storageInstructions: 'Store in a cool, dry place. Keep the jar tightly sealed. Use a dry spoon.',
+    shelfLife: '9 Months',
+    allergenWarning: 'Prepared in a kitchen that processes nuts. Contains mustard.',
+    imagePath: 'img/Gemini_Generated_Image_ (26).png'
+  },
+  {
+    id: 'karampodi',
+    name: "Teacher's Garlic Karampodi",
+    category: 'Podi',
+    shortDescription: 'Stone-ground roasted lentils and hot red chillies, heavily infused with aromatic garlic.',
+    description: 'Our signature garlic spice powder is stone-ground in small batches to preserve its rustic texture and natural oils. Prepared from select dried red chillies, roasted split lentils, and roasted cumin, all crushed together with fresh garlic cloves. It adds a powerful punch of heat and garlic aroma to any dish.',
+    spiceLevel: 'Hot',
+    bestWith: ['Hot Idly & Ghee', 'Dosa', 'Steamed Rice', 'Fried Eggs'],
+    ingredients: ['Dried Red Chillies', 'Garlic Cloves', 'Bengal Gram (Chana Dal)', 'Black Gram (Urad Dal)', 'Cumin Seeds', 'Salt', 'Sesame Seeds'],
+    storageInstructions: 'Store in an airtight container in a dry place. Keep away from moisture.',
+    shelfLife: '3 Months',
+    allergenWarning: 'Contains sesame and garlic. Prepared in a kitchen handling nuts.',
+    imagePath: 'img/Gemini_Generated_Image_ (14).png'
+  },
+  {
+    id: 'curry-leaf-podi',
+    name: 'Karivepaku (Curry Leaf) Podi',
+    category: 'Podi',
+    shortDescription: 'An aromatic blend of roasted curry leaves, cumin, and mild spices for daily wellness.',
+    description: 'A nutritious, earthy spice blend made with fresh curry leaves that are carefully washed, shade-dried, and roasted till crispy. They are then ground with roasted urad dal, chana dal, coriander seeds, and mild red chillies. Highly aromatic and packed with iron and antioxidants, it provides a warm, comforting addition to breakfast or lunch.',
+    spiceLevel: 'Medium',
+    bestWith: ['Steamed Rice with Ghee', 'Idly', 'Upma', 'Roasted Potatoes'],
+    ingredients: ['Fresh Curry Leaves', 'Black Gram (Urad Dal)', 'Bengal Gram (Chana Dal)', 'Coriander Seeds', 'Cumin Seeds', 'Mild Dry Chillies', 'Tamarind', 'Salt'],
+    storageInstructions: 'Store in a tight airtight container. Keep in a dry, dark place.',
+    shelfLife: '4 Months',
+    allergenWarning: 'Prepared in a facility processing sesame and nuts.',
+    imagePath: 'img/Gemini_Generated_Image_ (22).png'
+  },
+  {
+    id: 'idly-podi',
+    name: 'Nallakaram Idly Podi',
+    category: 'Podi',
+    shortDescription: 'Earthy roasted gram and coriander spice mix, a classic breakfast enhancer.',
+    description: 'Our classic Idly Podi, also known as Puttanalu Podi in some regions, is crafted using roasted bengal gram (puttanalu), whole black gram, and a touch of tamarind for a light, sour finish. Spiced moderately, it has an earthy, savory base that comes alive when mixed with warm sesame oil or melted ghee over fresh idlis.',
+    spiceLevel: 'Medium',
+    bestWith: ['Soft Steamed Idlis', 'Dosa', 'Uttapam', 'Neyyi (Ghee) Rice'],
+    ingredients: ['Roasted Bengal Gram', 'Black Gram (Urad Dal)', 'Red Chilli Powder', 'Coriander Seeds', 'Cumin', 'Tamarind', 'Salt'],
+    storageInstructions: 'Store in an airtight jar. Protect from moisture.',
+    shelfLife: '3 Months',
+    allergenWarning: 'Prepared in a facility processing sesame and nuts.',
+    imagePath: 'img/Gemini_Generated_Image_ (11).png'
+  },
+  {
+    id: 'karam-podi-idly',
+    name: 'Guntur Chilli Karam Podi',
+    category: 'Podi',
+    shortDescription: 'Coarse, extra-spicy Guntur red chilli coating powder for die-hard spice lovers.',
+    description: 'This Guntur Chilli Karam Podi is made specifically for those who love intense heat. Formulated using premium Guntur chillies, sesame seeds, and dry ginger, it is roasted to a dark, deep color and ground coarsely. When sprinkled generously on idlis or dosas, it creates a crispy, spicy crust that is unmatched in flavor.',
+    spiceLevel: 'Extra Hot',
+    bestWith: ['Idly with Sesame Oil', 'Masala Dosa', 'Vada', 'Fried Rice'],
+    ingredients: ['Guntur Red Chillies', 'Sesame Seeds', 'Black Gram', 'Cumin', 'Dry Ginger', 'Garlic', 'Salt'],
+    storageInstructions: 'Store in an airtight container. Keep in a dry location.',
+    shelfLife: '4 Months',
+    allergenWarning: 'Contains sesame, garlic, and ginger. Prepared in a facility processing nuts.',
+    imagePath: 'img/Gemini_Generated_Image_ (16).png'
+  }
+];

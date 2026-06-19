@@ -1,0 +1,184 @@
+<section class="preorder-header">
+  <div class="container header-content">
+    <span class="eyebrow">Local Austin, TX Registry</span>
+    <h1>Join the Batch Preorder</h1>
+    <p>Reserve your jars of hand-packaged, authentic Andhra pickles and podis. No payment is required today.</p>
+  </div>
+</section>
+
+<section class="section preorder-form-section">
+  <div class="container max-width-container">
+    
+    <!-- Success View -->
+    <div class="success-card card animate-fade-in" *ngIf="isSubmitted && isSubmissionSuccess">
+      <div class="success-icon-box">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" class="success-icon">
+          <polyline points="20 6 9 17 4 12" />
+        </svg>
+      </div>
+      <h2>Preorder Registered Successfully!</h2>
+      <p class="success-intro">
+        Thank you, <strong>{{ preorderForm.value.name }}</strong>. Amma has received your checklist and we've successfully stored your request locally.
+      </p>
+      
+      <div class="preorder-summary-box">
+        <h3>Estimated Batch Request:</h3>
+        <p><strong>Quantity Group:</strong> {{ preorderForm.value.quantityEstimation }}</p>
+        <p><strong>Registered Email:</strong> {{ preorderForm.value.email }}</p>
+        <p><strong>WhatsApp/Phone:</strong> {{ preorderForm.value.phone }}</p>
+      </div>
+
+      <div class="next-steps-box">
+        <h4>What Happens Next?</h4>
+        <p>
+          We are currently checking local demand and location details. Once the ingredients are procured and Amma bottles the batch, we will message you to confirm local Austin pickup coordinates.
+        </p>
+        <p class="urgent-text">
+          Want to ask Amma a question directly? Click below to send an instant message:
+        </p>
+        <div class="success-actions">
+          <a [href]="'https://wa.me/15125550199?text=Hi%20Amma%2C%20I%20just%20submitted%20a%20preorder%20interest%20under%20the%20name%20' + preorderForm.value.name" target="_blank" class="btn btn-whatsapp">
+            <svg class="wa-btn-icon" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.513 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.457L0 24zm6.59-3.483l.362.215c1.5.892 3.242 1.362 5.039 1.363 5.437 0 9.858-4.403 9.862-9.82 0-2.625-1.023-5.092-2.884-6.956C17.16 3.456 14.695 2.432 12.01 2.43c-5.442 0-9.863 4.404-9.866 9.821 0 1.892.493 3.738 1.428 5.378l.24.417-1.01 3.694 3.785-.992zm11.36-7.854c-.3-.15-1.774-.875-2.049-.976-.275-.101-.475-.15-.675.15-.2.3-.775.976-.95 1.176-.175.2-.35.225-.65.075-.3-.15-1.267-.467-2.414-1.49-1.128-1.007-1.89-2.25-2.112-2.63-.223-.38-.024-.585.127-.733.135-.133.3-.35.45-.525.15-.175.2-.3.3-.5.1-.2.05-.375-.025-.525-.075-.15-.675-1.625-.925-2.225-.244-.589-.493-.51-.675-.52-.172-.007-.368-.009-.565-.009-.196 0-.517.074-.788.374-.27.3-1.03 1.008-1.03 2.459 0 1.45 1.055 2.852 1.202 3.052.148.2 2.077 3.17 5.031 4.45 2.112.915 2.91.865 3.945.714 1.045-.153 2.775-.875 3.165-1.725.39-.85.39-1.575.275-1.725-.115-.15-.415-.3-.715-.45z"/>
+            </svg>
+            <span>Message on WhatsApp</span>
+          </a>
+          <button (click)="resetForm()" class="btn btn-secondary">Submit Another Request</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Active Form View -->
+    <div class="form-container card" *ngIf="!isSubmitted">
+      <form [formGroup]="preorderForm" (ngSubmit)="onSubmit()" novalidate>
+        
+        <div class="form-section-title">
+          <h3>1. Contact Details</h3>
+          <p>We'll use this to coordinate batch availability and pickup spots.</p>
+        </div>
+
+        <div class="grid-2">
+          <!-- Full Name -->
+          <div class="form-group">
+            <label for="name" class="form-label">Full Name *</label>
+            <input type="text" id="name" formControlName="name" class="form-input" placeholder="Enter your full name" [class.input-error]="preorderForm.get('name')?.touched && preorderForm.get('name')?.invalid">
+            <div class="error-msg" *ngIf="preorderForm.get('name')?.touched && preorderForm.get('name')?.hasError('required')">
+              Name is required.
+            </div>
+            <div class="error-msg" *ngIf="preorderForm.get('name')?.touched && preorderForm.get('name')?.hasError('minlength')">
+              Name must be at least 2 characters.
+            </div>
+          </div>
+
+          <!-- Email -->
+          <div class="form-group">
+            <label for="email" class="form-label">Email Address *</label>
+            <input type="email" id="email" formControlName="email" class="form-input" placeholder="name@example.com" [class.input-error]="preorderForm.get('email')?.touched && preorderForm.get('email')?.invalid">
+            <div class="error-msg" *ngIf="preorderForm.get('email')?.touched && preorderForm.get('email')?.hasError('required')">
+              Email is required.
+            </div>
+            <div class="error-msg" *ngIf="preorderForm.get('email')?.touched && preorderForm.get('email')?.hasError('email')">
+              Please enter a valid email.
+            </div>
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <!-- Phone / WhatsApp -->
+          <div class="form-group">
+            <label for="phone" class="form-label">Phone / WhatsApp Number *</label>
+            <input type="tel" id="phone" formControlName="phone" class="form-input" placeholder="e.g. +1 (512) 555-0199" [class.input-error]="preorderForm.get('phone')?.touched && preorderForm.get('phone')?.invalid">
+            <span class="field-hint">Primary method to contact you about pickup timing.</span>
+            <div class="error-msg" *ngIf="preorderForm.get('phone')?.touched && preorderForm.get('phone')?.hasError('required')">
+              Phone number is required.
+            </div>
+            <div class="error-msg" *ngIf="preorderForm.get('phone')?.touched && preorderForm.get('phone')?.hasError('pattern')">
+              Please enter a valid phone number.
+            </div>
+          </div>
+
+          <!-- Location Select -->
+          <div class="form-group">
+            <label for="location" class="form-label">Austin Region *</label>
+            <select id="location" formControlName="location" class="form-select" [class.input-error]="preorderForm.get('location')?.touched && preorderForm.get('location')?.invalid">
+              <option value="" disabled selected>Select your general area...</option>
+              <option value="Central Austin / Downtown">Central Austin / Downtown</option>
+              <option value="North Austin / Pflugerville">North Austin / Pflugerville</option>
+              <option value="South Austin / Buda">South Austin / Buda</option>
+              <option value="West Austin / Bee Cave / Lakeway">West Austin / Bee Cave / Lakeway</option>
+              <option value="East Austin / Manor">East Austin / Manor</option>
+              <option value="Round Rock / Cedar Park">Round Rock / Cedar Park</option>
+              <option value="Outside Austin (Shipping Interest)">Outside Austin (Shipping Interest)</option>
+            </select>
+            <div class="error-msg" *ngIf="preorderForm.get('location')?.touched && preorderForm.get('location')?.hasError('required')">
+              Please select a region.
+            </div>
+          </div>
+        </div>
+
+        <div class="form-separator"></div>
+
+        <div class="form-section-title">
+          <h3>2. Pick Your Jars</h3>
+          <p>Select which products you are interested in trying from Amma's kitchen.</p>
+        </div>
+
+        <!-- Product Selection Checklist -->
+        <div class="product-checklist-grid" formGroupName="productIds">
+          @for (product of allProducts; track product.id) {
+            <label class="product-checkbox-card">
+              <input type="checkbox" [formControlName]="product.id">
+              <span class="checkbox-custom"></span>
+              <div class="checkbox-info">
+                <span class="product-check-title">{{ product.name }}</span>
+                <span class="product-check-meta">
+                  <span class="cat-tag">{{ product.category }}</span>
+                  <span class="dot">&bull;</span>
+                  <span class="spice-tag">{{ product.spiceLevel }} Spice</span>
+                </span>
+              </div>
+            </label>
+          }
+        </div>
+
+        <div class="form-separator"></div>
+
+        <div class="form-section-title">
+          <h3>3. Quantity & Custom Requests</h3>
+          <p>Give Amma an idea of volume and spice tolerance preferences.</p>
+        </div>
+
+        <div class="grid-2">
+          <!-- Quantity Estimation -->
+          <div class="form-group">
+            <label for="quantity" class="form-label">Estimated Total Quantity *</label>
+            <select id="quantity" formControlName="quantityEstimation" class="form-select">
+              <option value="1-2 Jars">1-2 Jars (Sample taste)</option>
+              <option value="3-5 Jars">3-5 Jars (Standard family stock)</option>
+              <option value="6-10 Jars">6-10 Jars (Stocking up / Gifting)</option>
+              <option value="Bulk (10+ Jars)">Bulk Batch (10+ Jars)</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Custom Message -->
+        <div class="form-group">
+          <label for="customMessage" class="form-label">Custom Requests / Spice Adjustments (Optional)</label>
+          <textarea id="customMessage" formControlName="customMessage" class="form-textarea" rows="4" placeholder="Any custom spice notes or special instructions for Amma? (e.g. 'extra garlic in my Karampodi', 'mild option preferred')"></textarea>
+        </div>
+
+        <!-- Button Actions -->
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary btn-submit">
+            Register My Preorder
+          </button>
+          <p class="registry-disclaimer">
+            * By registering, you are expressing interest in local batch pick-ups. No payment is requested now. Jars will be packaged under local Austin, Texas compliance guidelines.
+          </p>
+        </div>
+
+      </form>
+    </div>
+
+  </div>
+</section>

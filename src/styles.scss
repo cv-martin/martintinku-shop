@@ -1,1 +1,349 @@
-/* You can add global styles to this file, and also import other style files */
+/* Headmaster Amma's Kitchen — Minimalist Premium Design System */
+
+:root {
+  /* Brand Colors */
+  --primary:         #111111;   /* Matte Black for elements, buttons, and titles */
+  --primary-light:   #2a2a2a;
+  --primary-soft:    #f1f5f9;
+  
+  --accent:          #e5383b;   /* Vibrant Guntur Chilli Red for highlights & badges */
+  --accent-light:    #f85153;
+  --accent-soft:     rgba(229, 56, 59, 0.08);
+
+  --secondary:       #475569;   /* Slate/Dark Grey */
+  --secondary-soft:  #f8fafc;
+  --green:           #166534;   /* Dark Forest Green for positive trust indicators */
+
+  /* Backgrounds */
+  --bg:              #f9f9f9;   /* Clean modern concrete white/grey */
+  --bg-card:         #ffffff;   /* Pure white cards */
+  --bg-warm:         #ffffff;   /* Clean white for alternative sections (no yellow tones) */
+  --bg-input:        #ffffff;
+
+  /* Text */
+  --text:            #0f172a;   /* Premium slate charcoal black */
+  --text-secondary:  #475569;   /* Slate grey for descriptions */
+  --text-muted:      #94a3b8;   /* Light slate grey */
+  --text-on-primary: #ffffff;
+
+  /* Borders */
+  --border:          #eaeaea;   /* Crisp modern border gray */
+  --border-light:    #f5f5f5;
+
+  /* Typography */
+  --font-heading:    'Outfit', system-ui, sans-serif; /* Geometric clean modern headings */
+  --font-body:       'Outfit', system-ui, sans-serif;
+
+  /* Shadows */
+  --shadow-sm:  0 1px 3px rgba(0,0,0,0.02);
+  --shadow-md:  0 4px 12px rgba(0,0,0,0.04);
+  --shadow-lg:  0 12px 32px rgba(0,0,0,0.06);
+
+  /* Shape & Motion */
+  --radius-sm:  4px;            /* Sharp, premium modern edges */
+  --radius-md:  8px;
+  --radius-lg:  12px;
+  --ease:       cubic-bezier(0.16, 1, 0.3, 1);
+  --duration:   0.25s;
+}
+
+/* ── Reset ────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* ── Typography ───────────────────────────────────────── */
+h1, h2, h3, h4 {
+  font-family: var(--font-heading);
+  color: var(--text);
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+p { margin-bottom: 1rem; }
+
+a {
+  color: var(--primary);
+  text-decoration: none;
+  transition: color var(--duration) var(--ease);
+  &:hover { color: var(--primary-light); }
+}
+
+/* ── Scrollbar ────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
+
+/* ── Layout ───────────────────────────────────────────── */
+.container {
+  width: 100%;
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  @media (min-width: 768px) { padding: 0 2rem; }
+}
+
+.section {
+  padding: 5rem 0;
+  &.section-warm { background: var(--bg-warm); }
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  align-items: center;
+  @media (min-width: 768px) { grid-template-columns: repeat(2, 1fr); }
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  @media (min-width: 580px)  { grid-template-columns: repeat(2, 1fr); }
+  @media (min-width: 960px)  { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* ── Badges ───────────────────────────────────────────── */
+.badge {
+  display: inline-block;
+  padding: 0.2rem 0.5rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+
+  &.badge-pickle {
+    background: #111111;
+    color: #ffffff;
+    border: none;
+  }
+  &.badge-podi {
+    background: #ffffff;
+    color: #475569;
+    border: 1px solid var(--border);
+  }
+}
+
+/* ── Buttons ──────────────────────────────────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.8rem 1.6rem;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 600;
+  border-radius: var(--radius-sm);
+  border: 1.5px solid transparent;
+  cursor: pointer;
+  transition: all var(--duration) var(--ease);
+  white-space: nowrap;
+
+  &:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 3px;
+  }
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: #fff;
+  border-color: var(--primary);
+  &:hover {
+    background: var(--primary-light);
+    border-color: var(--primary-light);
+    color: #fff;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+  }
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--primary);
+  border-color: var(--primary);
+  &:hover {
+    background: var(--primary-soft);
+    transform: translateY(-1px);
+  }
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--text-secondary);
+  border-color: var(--border);
+  &:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+    background: var(--primary-soft);
+  }
+}
+
+.btn-whatsapp {
+  background: #121212; /* Premium dark theme whatsapp */
+  color: #fff;
+  border-color: #121212;
+  &:hover {
+    background: #25d366; /* turns green on hover */
+    border-color: #25d366;
+    color: #fff;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(37,211,102,0.15);
+  }
+}
+
+.btn-link {
+  background: none;
+  border: none;
+  padding: 0;
+  color: var(--accent);
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-family: var(--font-body);
+  font-size: inherit;
+  transition: all var(--duration) var(--ease);
+  &:hover { color: var(--accent-light); gap: 0.55rem; }
+}
+
+/* ── Cards ────────────────────────────────────────────── */
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  transition: all var(--duration) var(--ease);
+  box-shadow: var(--shadow-sm);
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+    border-color: rgba(181,52,31,0.18);
+  }
+}
+
+/* ── Forms ────────────────────────────────────────────── */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-bottom: 1.25rem;
+}
+
+.form-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.form-input, .form-textarea, .form-select {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  background: var(--bg-input);
+  color: var(--text);
+  transition: border-color var(--duration) var(--ease);
+
+  &:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px var(--primary-soft);
+  }
+  &::placeholder { color: var(--text-muted); }
+}
+
+/* ── Section Title ────────────────────────────────────── */
+.section-title {
+  text-align: center;
+  margin-bottom: 3.5rem;
+
+  .eyebrow-label {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--primary);
+    margin-bottom: 0.75rem;
+  }
+
+  h2 {
+    font-size: clamp(1.85rem, 3.5vw, 2.75rem);
+    margin-bottom: 0.6rem;
+  }
+
+  p {
+    color: var(--text-muted);
+    font-size: 1rem;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+}
+
+/* ── Page Header Band ─────────────────────────────────── */
+.page-header {
+  background: var(--bg-warm);
+  border-bottom: 1px solid var(--border);
+  padding: 4rem 0 3.5rem;
+  text-align: center;
+
+  .eyebrow-label {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--primary);
+    margin-bottom: 0.75rem;
+  }
+
+  h1 { font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 0.65rem; }
+
+  p {
+    color: var(--text-muted);
+    font-size: 1rem;
+    max-width: 520px;
+    margin: 0 auto;
+  }
+}
+
+/* ── Divider ──────────────────────────────────────────── */
+.divider {
+  height: 1px;
+  background: var(--border);
+  margin: 0;
+}
+
+/* ── Animations ───────────────────────────────────────── */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.animate-fade-in { animation: fadeInUp 0.55s var(--ease) both; }
