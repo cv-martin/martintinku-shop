@@ -167,3 +167,100 @@
     border-radius: var(--radius-sm);
   }
 }
+
+/* Category & Status Badges */
+.status-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  box-shadow: var(--shadow-sm);
+}
+
+/* Position for status badge on card */
+.status-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  box-shadow: var(--shadow-sm);
+}
+
+/* Coming Soon Card styling */
+.coming-soon-card {
+  opacity: 0.95;
+  border-style: dashed;
+  
+  .product-image {
+    filter: grayscale(20%);
+  }
+}
+
+/* Combo Includes block */
+.combo-includes {
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+
+  .includes-label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 0.25rem;
+  }
+
+  .includes-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+  }
+
+  .includes-tag {
+    font-size: 0.7rem;
+    background: #f8fafc;
+    color: #475569;
+    border: 1px dashed var(--border);
+    padding: 0.15rem 0.4rem;
+    border-radius: 3px;
+  }
+}
+
+/* Voting elements */
+.vote-btn {
+  font-weight: bold;
+}
+
+.voted-btn {
+  background: #166534 !important;
+  border-color: #166534 !important;
+  color: #fff !important;
+  cursor: not-allowed;
+}
+
+.vote-toast-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(17, 17, 17, 0.85);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.05rem;
+  text-align: center;
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  
+  span {
+    background: var(--primary);
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--accent);
+    box-shadow: var(--shadow-lg);
+  }
+}
+

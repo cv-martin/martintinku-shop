@@ -1,16 +1,41 @@
-<div class="product-card">
+<div class="product-card" [class.coming-soon-card]="product.availabilityStatus === 'Coming Soon'">
   <div class="product-image-container">
     <img [src]="product.imagePath" [alt]="product.name" class="product-image">
     <div class="illustrative-tag">Illustrative</div>
+    
+    <!-- Category Badge -->
     <span class="category-badge badge"
-      [class.badge-pickle]="product.category === 'Pickle'"
-      [class.badge-podi]="product.category === 'Podi'">
+      [class.badge-pickle]="product.category === 'Pickles' || product.category === 'Non-Veg Pickles'"
+      [class.badge-podi]="product.category === 'Podis / Spice Powders'"
+      [class.badge-combo]="product.category === 'Combo Boxes'"
+      [class.badge-seasonal]="product.category === 'Seasonal Specials'">
       {{ product.category }}
+    </span>
+
+    <!-- Status Badge -->
+    <span class="status-badge badge"
+      [class.status-preorder]="product.availabilityStatus === 'Preorder Interest Open'"
+      [class.status-coming]="product.availabilityStatus === 'Coming Soon'"
+      [class.status-limited]="product.availabilityStatus === 'Limited Batch'"
+      [class.status-review]="product.availabilityStatus === 'Availability Under Review'">
+      {{ product.availabilityStatus }}
     </span>
   </div>
 
   <div class="product-content">
     <h3 class="product-title">{{ product.name }}</h3>
+
+    <!-- Combo items preview -->
+    @if (product.isCombo && product.includedItems) {
+      <div class="combo-includes">
+        <span class="includes-label">Includes:</span>
+        <div class="includes-list">
+          @for (item of product.includedItems; track item) {
+            <span class="includes-tag">{{ item }}</span>
+          }
+        </div>
+      </div>
+    }
 
     <div class="spice-rating" [title]="'Spice: ' + product.spiceLevel">
       <span class="spice-label">Spice:</span>
@@ -21,7 +46,7 @@
           </svg>
         }
       </div>
-      <span class="spice-text" [class.extra-hot]="product.spiceLevel === 'Extra Hot'">{{ product.spiceLevel }}</span>
+      <span class="spice-text" [class.extra-hot]="product.spiceLevel === 'Extra Hot' || product.spiceLevel === 'Andhra Fire'">{{ product.spiceLevel }}</span>
     </div>
 
     <p class="product-description">{{ product.shortDescription }}</p>
@@ -29,7 +54,7 @@
     <div class="best-with">
       <div class="bw-label">Best with</div>
       <div class="tags-row">
-        @for (tag of product.bestWith.slice(0, 2); track tag) {
+        @for (tag of product.bestWith; track tag) {
           <span class="pairing-tag">{{ tag }}</span>
         }
       </div>
@@ -38,6 +63,21 @@
 
   <div class="product-actions">
     <a [routerLink]="['/products', product.id]" class="btn btn-secondary card-btn">Details</a>
-    <a [routerLink]="['/preorder']" [queryParams]="{ productId: product.id }" class="btn btn-primary card-btn">Preorder</a>
+    
+    @if (product.availabilityStatus === 'Coming Soon') {
+      <button (click)="vote($event)" [disabled]="hasVoted" class="btn btn-primary card-btn vote-btn" [class.voted-btn]="hasVoted">
+        {{ hasVoted ? '✓ Voted' : 'Vote for Next Batch' }}
+      </button>
+    } @else if (product.availabilityStatus === 'Preorder Interest Open') {
+      <a [routerLink]="['/preorder']" [queryParams]="{ productId: product.id }" class="btn btn-primary card-btn">Join Preorder</a>
+    } @else {
+      <a [routerLink]="['/preorder']" [queryParams]="{ productId: product.id }" class="btn btn-primary card-btn">Request Availability</a>
+    }
   </div>
+  
+  @if (showVoteSuccess) {
+    <div class="vote-toast-overlay animate-fade-in">
+      <span>Vote Registered! Thank you.</span>
+    </div>
+  }
 </div>

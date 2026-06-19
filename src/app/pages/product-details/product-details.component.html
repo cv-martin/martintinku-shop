@@ -33,12 +33,40 @@
     </div>
 
     <!-- Right Column: Details Content -->
-    <div class="details-content-box">
-      <span class="category-badge badge" [class.badge-pickle]="product.category === 'Pickle'" [class.badge-podi]="product.category === 'Podi'">
-        {{ product.category }}
-      </span>
+    <div class="details-content-box" style="position: relative;">
+      <div style="display: flex; gap: 0.5rem; align-items: center; margin-bottom: 0.75rem;">
+        <span class="category-badge badge" 
+          [class.badge-pickle]="product.category === 'Pickles' || product.category === 'Non-Veg Pickles'" 
+          [class.badge-podi]="product.category === 'Podis / Spice Powders'"
+          [class.badge-combo]="product.category === 'Combo Boxes'"
+          [class.badge-seasonal]="product.category === 'Seasonal Specials'">
+          {{ product.category }}
+        </span>
+        
+        <span class="status-badge-details badge"
+          [class.status-preorder]="product.availabilityStatus === 'Preorder Interest Open'"
+          [class.status-coming]="product.availabilityStatus === 'Coming Soon'"
+          [class.status-limited]="product.availabilityStatus === 'Limited Batch'"
+          [class.status-review]="product.availabilityStatus === 'Availability Under Review'">
+          {{ product.availabilityStatus }}
+        </span>
+      </div>
       
       <h1 class="details-title">{{ product.name }}</h1>
+
+      <!-- Combo items preview -->
+      @if (product.isCombo && product.includedItems) {
+        <div class="combo-includes-details" style="margin-bottom: 1.5rem;">
+          <h4 style="font-size: 0.9rem; font-weight: 700; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.5rem;">Included in Box:</h4>
+          <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+            @for (item of product.includedItems; track item) {
+              <span style="font-size: 0.85rem; background: #f8fafc; color: #475569; border: 1px dashed var(--border); padding: 0.25rem 0.65rem; border-radius: 4px; font-weight: 500;">
+                {{ item }}
+              </span>
+            }
+          </div>
+        </div>
+      }
 
       <!-- Spice Rating -->
       <div class="details-spice">
@@ -50,7 +78,7 @@
             </svg>
           }
         </div>
-        <span class="spice-text" [class.extra-hot]="product.spiceLevel === 'Extra Hot'">{{ product.spiceLevel }}</span>
+        <span class="spice-text" [class.extra-hot]="product.spiceLevel === 'Extra Hot' || product.spiceLevel === 'Andhra Fire'">{{ product.spiceLevel }}</span>
       </div>
 
       <p class="details-short-desc"><strong>Summary:</strong> {{ product.shortDescription }}</p>
@@ -60,16 +88,33 @@
 
       <!-- Action Area -->
       <div class="details-actions">
-        <a [routerLink]="['/preorder']" [queryParams]="{ productId: product.id }" class="btn btn-primary btn-lg flex-1">
-          Register Preorder Interest
-        </a>
-        <a [href]="'https://wa.me/15125550199?text=Hi%20Amma%2C%20I%27m%20interested%20in%20preordering%20the%20' + product.name" target="_blank" class="btn btn-whatsapp btn-lg">
+        @if (product.availabilityStatus === 'Coming Soon') {
+          <button (click)="vote($event)" [disabled]="hasVoted" class="btn btn-primary btn-lg flex-1" [class.voted-btn]="hasVoted" style="font-weight: bold;">
+            {{ hasVoted ? '✓ Voted' : 'Vote for Next Batch' }}
+          </button>
+        } @else if (product.availabilityStatus === 'Preorder Interest Open') {
+          <a [routerLink]="['/preorder']" [queryParams]="{ productId: product.id }" class="btn btn-primary btn-lg flex-1">
+            Register Preorder Interest
+          </a>
+        } @else {
+          <a [routerLink]="['/preorder']" [queryParams]="{ productId: product.id }" class="btn btn-primary btn-lg flex-1">
+            Request Availability
+          </a>
+        }
+        
+        <a [href]="'https://wa.me/15125550199?text=Hi%20Amma%2C%20I%27m%20interested%20in%20' + product.name" target="_blank" class="btn btn-whatsapp btn-lg">
           <svg class="wa-btn-icon" viewBox="0 0 24 24" fill="currentColor">
             <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.513 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.457L0 24zm6.59-3.483l.362.215c1.5.892 3.242 1.362 5.039 1.363 5.437 0 9.858-4.403 9.862-9.82 0-2.625-1.023-5.092-2.884-6.956C17.16 3.456 14.695 2.432 12.01 2.43c-5.442 0-9.863 4.404-9.866 9.821 0 1.892.493 3.738 1.428 5.378l.24.417-1.01 3.694 3.785-.992zm11.36-7.854c-.3-.15-1.774-.875-2.049-.976-.275-.101-.475-.15-.675.15-.2.3-.775.976-.95 1.176-.175.2-.35.225-.65.075-.3-.15-1.267-.467-2.414-1.49-1.128-1.007-1.89-2.25-2.112-2.63-.223-.38-.024-.585.127-.733.135-.133.3-.35.45-.525.15-.175.2-.3.3-.5.1-.2.05-.375-.025-.525-.075-.15-.675-1.625-.925-2.225-.244-.589-.493-.51-.675-.52-.172-.007-.368-.009-.565-.009-.196 0-.517.074-.788.374-.27.3-1.03 1.008-1.03 2.459 0 1.45 1.055 2.852 1.202 3.052.148.2 2.077 3.17 5.031 4.45 2.112.915 2.91.865 3.945.714 1.045-.153 2.775-.875 3.165-1.725.39-.85.39-1.575.275-1.725-.115-.15-.415-.3-.715-.45z"/>
           </svg>
           <span>WhatsApp Inquiry</span>
         </a>
       </div>
+      
+      @if (showVoteSuccess) {
+        <div style="margin-top: 1rem; padding: 0.75rem; background: #dcfce7; border: 1px solid #bbf7d0; color: #15803d; border-radius: 4px; font-size: 0.92rem; font-weight: 600;" class="animate-fade-in">
+          Vote successfully registered! We will notify the kitchen.
+        </div>
+      }
     </div>
   </div>
 
@@ -134,7 +179,7 @@
     <div class="compliance-box">
       <h4>Preorder & Availability Status</h4>
       <p>
-        Currently in validation/preorder stage. Availability, shipping, packaging, and regulatory compliance vary by location. Jars are sold under Austin local pickup protocols.
+        Products are currently in validation/preorder stage. Availability, shipping, packaging, and regulatory compliance may vary by location.
       </p>
     </div>
   </div>

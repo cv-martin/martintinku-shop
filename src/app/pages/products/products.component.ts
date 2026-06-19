@@ -15,7 +15,7 @@ export class ProductsComponent implements OnInit {
   allProducts: Product[] = [];
   filteredProducts: Product[] = [];
   
-  categoryFilter: 'All' | 'Pickle' | 'Podi' = 'All';
+  categoryFilter: 'All' | 'Pickles' | 'Podis' | 'Combos' = 'All';
   sortBy: 'name' | 'spiceAsc' | 'spiceDesc' = 'name';
 
   constructor(private productService: ProductService) {}
@@ -27,7 +27,7 @@ export class ProductsComponent implements OnInit {
     });
   }
 
-  setCategoryFilter(category: 'All' | 'Pickle' | 'Podi'): void {
+  setCategoryFilter(category: 'All' | 'Pickles' | 'Podis' | 'Combos'): void {
     this.categoryFilter = category;
     this.applyFilterAndSort();
   }
@@ -41,8 +41,12 @@ export class ProductsComponent implements OnInit {
   private applyFilterAndSort(): void {
     // 1. Apply category filter
     let result = [...this.allProducts];
-    if (this.categoryFilter !== 'All') {
-      result = result.filter(p => p.category === this.categoryFilter);
+    if (this.categoryFilter === 'Pickles') {
+      result = result.filter(p => p.category === 'Pickles' || p.category === 'Non-Veg Pickles');
+    } else if (this.categoryFilter === 'Podis') {
+      result = result.filter(p => p.category === 'Podis / Spice Powders');
+    } else if (this.categoryFilter === 'Combos') {
+      result = result.filter(p => p.category === 'Combo Boxes');
     }
 
     // Helper to score spice level
@@ -52,6 +56,7 @@ export class ProductsComponent implements OnInit {
         case 'Medium': return 2;
         case 'Hot': return 3;
         case 'Extra Hot': return 4;
+        case 'Andhra Fire': return 5;
         default: return 0;
       }
     };

@@ -63,4 +63,29 @@ export class PreorderService {
       return [];
     }
   }
+
+  submitVote(productId: string): Observable<boolean> {
+    try {
+      const existingStr = localStorage.getItem('hamk_votes');
+      const votes: string[] = existingStr ? JSON.parse(existingStr) : [];
+      if (!votes.includes(productId)) {
+        votes.push(productId);
+        localStorage.setItem('hamk_votes', JSON.stringify(votes));
+      }
+      return of(true);
+    } catch (error) {
+      console.error('Failed to save vote to localStorage:', error);
+      return of(false);
+    }
+  }
+
+  hasVoted(productId: string): boolean {
+    try {
+      const existingStr = localStorage.getItem('hamk_votes');
+      const votes: string[] = existingStr ? JSON.parse(existingStr) : [];
+      return votes.includes(productId);
+    } catch {
+      return false;
+    }
+  }
 }

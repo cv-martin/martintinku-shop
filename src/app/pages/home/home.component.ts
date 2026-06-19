@@ -13,14 +13,29 @@ import { Product } from '../../core/models/product.model';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  featuredProducts: Product[] = [];
+  featuredPickles: Product[] = [];
+  featuredPodis: Product[] = [];
+  comboBoxes: Product[] = [];
+  comingSoonProducts: Product[] = [];
 
   constructor(private productService: ProductService) {}
 
   ngOnInit(): void {
     this.productService.getProducts().subscribe(products => {
-      // Pick first 3 as featured products
-      this.featuredProducts = products.slice(0, 3);
+      // Filter out Coming Soon first for the active catalogs
+      const available = products.filter(p => p.availabilityStatus !== 'Coming Soon');
+      
+      // Filter pickles (Veg and Non-Veg)
+      this.featuredPickles = available.filter(p => p.category === 'Pickles' || p.category === 'Non-Veg Pickles').slice(0, 3);
+      
+      // Filter podis
+      this.featuredPodis = available.filter(p => p.category === 'Podis / Spice Powders').slice(0, 3);
+      
+      // Filter Combo Boxes
+      this.comboBoxes = available.filter(p => p.category === 'Combo Boxes');
+      
+      // Filter Coming Soon
+      this.comingSoonProducts = products.filter(p => p.availabilityStatus === 'Coming Soon');
     });
   }
 }
