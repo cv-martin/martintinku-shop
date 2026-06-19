@@ -23,14 +23,28 @@
 /* Logo */
 .logo {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.65rem;
   line-height: 1;
-  gap: 0.05rem;
   text-decoration: none;
+
+  .logo-img {
+    height: 38px;
+    width: 38px;
+    object-fit: contain;
+    border-radius: 50%;
+  }
+
+  .logo-text-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.05rem;
+  }
 
   .logo-text {
     font-family: var(--font-heading);
-    font-size: 1.15rem;
+    font-size: 1.1rem;
     font-weight: 800;
     color: var(--primary);
     letter-spacing: -0.02em;
