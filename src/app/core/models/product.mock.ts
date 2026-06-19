@@ -13,7 +13,8 @@ export const MOCK_PRODUCTS: Product[] = [
     storageInstructions: 'Store in a cool, dry place. Always use a dry spoon. Do not refrigerate.',
     shelfLife: '6 Months',
     allergenWarning: 'Prepared in a kitchen that processes nuts and sesame. Contains mustard and garlic.',
-    imagePath: 'img/Gemini_Generated_Image_ (2).png'
+    imagePath: 'img/gongura_pickle_packaging.jpg',
+    secondaryImagePath: 'img/Gemini_Generated_Image_ (2).png'
   },
   {
     id: 'mango-pickle',
@@ -100,5 +101,19 @@ export const MOCK_PRODUCTS: Product[] = [
     shelfLife: '3 Months',
     allergenWarning: 'Prepared in a kitchen that processes sesame and nuts. Contains garlic.',
     imagePath: 'img/pappula_podi_packaging.jpg'
+  },
+  {
+    id: 'prawns-pickle',
+    name: 'Prawns Pickle',
+    category: 'Pickle',
+    shortDescription: 'Authentic Andhra Style. Premium small-batch prawns pickle infused with traditional aromatic spices.',
+    description: 'A true coastal Andhra delicacy, our premium Prawns Pickle (Royyala Avakaya) is crafted using fresh, succulent prawns cooked to a tender bite. Infused with cold-pressed sesame oil, Guntur red chillies, mustard powder, fenugreek, and hand-ground ginger-garlic paste. Perfectly spiced and aged to let the robust marine and spice flavors mature, it brings an irresistible savory richness to hot rice, rotis, or dosas.',
+    spiceLevel: 'Hot',
+    bestWith: ['Steamed Rice & Ghee', 'Roti / Chapati', 'Dosa', 'Khichdi'],
+    ingredients: ['Fresh Succulent Prawns', 'Cold-pressed Sesame Oil', 'Red Chilli Powder', 'Ginger-Garlic Paste', 'Salt', 'Mustard Seed Powder', 'Lemon Juice', 'Fenugreek Seeds', 'Turmeric'],
+    storageInstructions: 'Store in a cool, dry place. Always use a dry spoon. Keep the jar tightly sealed. Refrigerate after opening to preserve freshness.',
+    shelfLife: '3 Months',
+    allergenWarning: 'Contains shellfish (prawns) and garlic. Prepared in a facility handling sesame and nuts.',
+    imagePath: 'img/prawns_pickle_packaging.jpg'
   }
 ];
