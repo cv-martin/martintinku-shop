@@ -85,5 +85,19 @@ export const MOCK_PRODUCTS: Product[] = [
     shelfLife: '4 Months',
     allergenWarning: 'Contains sesame, garlic, and ginger. Prepared in a facility processing nuts.',
     imagePath: 'img/Gemini_Generated_Image_ (16).png'
+  },
+  {
+    id: 'pappula-podi',
+    name: 'Pappula Podi',
+    category: 'Podi',
+    shortDescription: 'Premium International Edition. A classic, flavorful Andhra-style roasted gram and red chilli chutney powder.',
+    description: 'Our premium Pappula Podi (Puttanalu Podi) is crafted using roasted split gram lentils (puttanalu), Guntur red chillies, and aromatic cumin seeds, stone-ground to a fine, savory blend. Celebrated for its iron enrichment, digestive harmony, and heritage aroma, this flavorful Andhra-style chutney podi is perfect for mixing with hot rice and ghee, or serving alongside fresh idlis and crispy dosas.',
+    spiceLevel: 'Medium',
+    bestWith: ['Steamed Rice with Ghee', 'Soft Idlis', 'Crispy Dosas', 'Upma'],
+    ingredients: ['Roasted Bengal Gram (Puttanalu)', 'Dry Red Chillies', 'Garlic Cloves', 'Cumin Seeds', 'Salt'],
+    storageInstructions: 'Store in an airtight container in a cool, dry place. Keep away from moisture.',
+    shelfLife: '3 Months',
+    allergenWarning: 'Prepared in a kitchen that processes sesame and nuts. Contains garlic.',
+    imagePath: 'img/pappula_podi_packaging.jpg'
   }
 ];
