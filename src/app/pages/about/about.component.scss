@@ -52,7 +52,7 @@
     overflow: hidden;
     box-shadow: var(--shadow-lg);
     border: 5px solid #fff;
-    aspect-ratio: 1/1;
+    aspect-ratio: 3/4;
     background: var(--border-light);
 
     .portrait-img {
@@ -175,3 +175,106 @@
     }
   }
 }
+
+/* Hands-On Passion Section */
+.passion-section {
+  margin-top: 4rem;
+  margin-bottom: 5rem;
+  border-top: 1px solid var(--border);
+  padding-top: 4rem;
+}
+
+.passion-row {
+  align-items: center;
+  gap: 3rem;
+}
+
+.passion-text-wrapper {
+  .eyebrow {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--primary);
+    margin-bottom: 0.5rem;
+  }
+  
+  h2 {
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    margin-bottom: 1.25rem;
+    color: var(--text);
+  }
+
+  .accent-paragraph {
+    font-size: 1.1rem;
+    font-family: var(--font-heading);
+    color: var(--primary);
+    font-weight: 600;
+    line-height: 1.6;
+    border-left: 3px solid var(--primary);
+    padding-left: 1rem;
+    margin-bottom: 1.25rem;
+  }
+
+  p {
+    font-size: 0.975rem;
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+    line-height: 1.7;
+  }
+}
+
+.passion-gallery-wrapper {
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+  }
+
+  .gallery-item {
+    position: relative;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    border: 4px solid #fff;
+    background: var(--border-light);
+    aspect-ratio: 3/4;
+
+    .gallery-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    &:hover .gallery-img {
+      transform: scale(1.05);
+    }
+
+    .gallery-label {
+      position: absolute;
+      bottom: 8px;
+      left: 8px;
+      background: rgba(28,16,8,0.75);
+      color: #fff;
+      font-size: 0.7rem;
+      font-weight: 600;
+      padding: 0.25rem 0.5rem;
+      border-radius: 4px;
+      pointer-events: none;
+    }
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .passion-row {
+    flex-direction: column;
+    gap: 2rem;
+  }
+  .passion-gallery-wrapper .gallery-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
