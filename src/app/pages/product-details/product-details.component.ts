@@ -13,6 +13,7 @@ import { Product } from '../../core/models/product.model';
 })
 export class ProductDetailsComponent implements OnInit {
   product: Product | undefined;
+  activeImagePath: string | undefined;
 
   constructor(
     private route: ActivatedRoute,
@@ -27,6 +28,7 @@ export class ProductDetailsComponent implements OnInit {
         this.productService.getProductById(productId).subscribe(product => {
           if (product) {
             this.product = product;
+            this.activeImagePath = product.imagePath;
           } else {
             // Product not found, redirect to catalog
             this.router.navigate(['/products']);
@@ -36,6 +38,10 @@ export class ProductDetailsComponent implements OnInit {
         this.router.navigate(['/products']);
       }
     });
+  }
+
+  setActiveImage(path: string): void {
+    this.activeImagePath = path;
   }
 
   getChilliesArray(spiceLevel: string): number[] {

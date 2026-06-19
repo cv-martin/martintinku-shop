@@ -12,10 +12,24 @@
     <!-- Left Column: Image -->
     <div class="details-image-box">
       <div class="image-wrapper">
-        <img [src]="product.imagePath" [alt]="product.name" class="detail-image">
+        <img [src]="activeImagePath" [alt]="product.name" class="detail-image">
         <div class="illustrative-overlay">Illustrative Image</div>
       </div>
       <p class="image-caption">Illustrative brand image inspired by Amma's kitchen.</p>
+
+      <!-- Thumbnails Gallery -->
+      <div class="image-thumbnails" *ngIf="product.secondaryImagePath">
+        <div class="thumbnail-item" 
+             [class.active]="activeImagePath === product.imagePath"
+             (click)="setActiveImage(product.imagePath)">
+          <img [src]="product.imagePath" [alt]="product.name" class="thumb-img">
+        </div>
+        <div class="thumbnail-item" 
+             [class.active]="activeImagePath === product.secondaryImagePath"
+             (click)="setActiveImage(product.secondaryImagePath)">
+          <img [src]="product.secondaryImagePath" [alt]="product.name" class="thumb-img">
+        </div>
+      </div>
     </div>
 
     <!-- Right Column: Details Content -->

@@ -11,4 +11,5 @@ export interface Product {
   shelfLife: string;
   allergenWarning: string;
   imagePath: string;
+  secondaryImagePath?: string;
 }

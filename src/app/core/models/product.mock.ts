@@ -45,17 +45,18 @@ export const MOCK_PRODUCTS: Product[] = [
   },
   {
     id: 'curry-leaf-podi',
-    name: 'Karivepaku (Curry Leaf) Podi',
+    name: 'Karivepaku Podi',
     category: 'Podi',
-    shortDescription: 'An aromatic blend of roasted curry leaves, cumin, and mild spices for daily wellness.',
-    description: 'A nutritious, earthy spice blend made with fresh curry leaves that are carefully washed, shade-dried, and roasted till crispy. They are then ground with roasted urad dal, chana dal, coriander seeds, and mild red chillies. Highly aromatic and packed with iron and antioxidants, it provides a warm, comforting addition to breakfast or lunch.',
+    shortDescription: 'Premium International Edition. A highly aromatic, iron-rich spiced curry leaves powder.',
+    description: 'Our Karivepaku Podi (Curry Leaf Powder) is a premium South Indian spiced condiment made from fresh, shade-dried curry leaves roasted to a crisp. Graded to Headmaster standards, it is stone-ground with roasted black gram (urad dal), bengal gram (chana dal), coriander seeds, cumin, and dry chillies. Rich in antioxidants and natural iron, it aids digestion and brings a deep, earthy warmth to traditional breakfasts and meals.',
     spiceLevel: 'Medium',
-    bestWith: ['Steamed Rice with Ghee', 'Idly', 'Upma', 'Roasted Potatoes'],
-    ingredients: ['Fresh Curry Leaves', 'Black Gram (Urad Dal)', 'Bengal Gram (Chana Dal)', 'Coriander Seeds', 'Cumin Seeds', 'Mild Dry Chillies', 'Tamarind', 'Salt'],
-    storageInstructions: 'Store in a tight airtight container. Keep in a dry, dark place.',
+    bestWith: ['Steamed Rice & Ghee', 'Idly', 'Dosa', 'Upma'],
+    ingredients: ['Fresh Curry Leaves', 'Black Gram (Urad Dal)', 'Bengal Gram (Chana Dal)', 'Coriander Seeds', 'Cumin Seeds', 'Dry Red Chillies', 'Salt'],
+    storageInstructions: 'Store in an airtight container in a cool, dry, dark place.',
     shelfLife: '4 Months',
-    allergenWarning: 'Prepared in a facility processing sesame and nuts.',
-    imagePath: 'img/Gemini_Generated_Image_ (22).png'
+    allergenWarning: 'Contains mustard, sesame, and pulses. Prepared in a facility handling nuts.',
+    imagePath: 'img/curry_leaf_podi_packaging.jpg',
+    secondaryImagePath: 'img/curry_leaf_podi_plating.jpg'
   },
   {
     id: 'idly-podi',
