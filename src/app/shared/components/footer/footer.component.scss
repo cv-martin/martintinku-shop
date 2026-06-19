@@ -24,40 +24,64 @@
 
   .logo {
     display: flex;
-    flex-direction: row;
     align-items: center;
-    gap: 0.75rem;
+    gap: 0.85rem;
     text-decoration: none;
-    line-height: 1;
+    transition: transform var(--duration) var(--ease);
 
-    .logo-img {
-      height: 44px;
-      width: 44px;
-      object-fit: contain;
-      border-radius: 50%;
-      background: #fff;
-      padding: 2px;
+    &:hover {
+      transform: scale(1.02);
+      
+      .logo-emblem-container {
+        transform: rotate(-5deg) scale(1.05);
+      }
     }
 
-    .logo-text-group {
+    .logo-emblem-container {
       display: flex;
-      flex-direction: column;
-      gap: 0.1rem;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      transition: transform var(--duration) var(--ease);
+    }
+
+    .logo-emblem {
+      display: block;
+      width: 44px;
+      height: 44px;
     }
 
     .logo-text {
-      font-family: var(--font-heading);
-      font-size: 1.25rem;
-      font-weight: 800;
-      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      line-height: 1.1;
     }
 
-    .logo-subtext {
-      font-size: 0.65rem;
-      font-weight: 700;
+    .logo-brand {
+      font-family: var(--font-heading);
+      font-size: 1.3rem;
+      font-weight: 900;
+      letter-spacing: -0.015em;
       text-transform: uppercase;
-      letter-spacing: 0.18em;
+      color: #ffffff;
+
+      .accent-dot {
+        color: var(--accent);
+        font-size: 1.45rem;
+        line-height: 0;
+        margin-left: 1px;
+      }
+    }
+
+    .logo-desc {
+      font-family: var(--font-body);
+      font-size: 0.65rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.28em;
       color: var(--accent);
+      margin-top: 0.1rem;
     }
   }
 

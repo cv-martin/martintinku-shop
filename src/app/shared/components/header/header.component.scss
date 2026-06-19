@@ -1,12 +1,27 @@
-.header {
-  position: sticky;
+:host {
+  position: fixed;
   top: 0;
+  left: 0;
+  right: 0;
   width: 100%;
   z-index: 1000;
+  display: block;
+}
+
+.header {
+  width: 100%;
   background: rgba(255, 255, 255, 0.96);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border);
-  box-shadow: 0 1px 8px rgba(0,0,0,0.02);
+  box-shadow: var(--shadow-sm);
+  transition: background var(--duration) var(--ease), box-shadow var(--duration) var(--ease), border-color var(--duration) var(--ease);
+
+  &.scrolled {
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(16px);
+    box-shadow: var(--shadow-md);
+    border-bottom: 1px solid rgba(229, 56, 59, 0.08); // Subtle red accent border bottom when scrolled
+  }
 }
 
 .header-container {
@@ -16,49 +31,96 @@
   max-width: 1160px;
   margin: 0 auto;
   padding: 0 2rem;
-  height: 64px;
-  @media (max-width: 767px) { padding: 0 1.25rem; }
+  height: 96px; // Spacious desktop header
+  transition: height var(--duration) var(--ease);
+  @media (max-width: 767px) { padding: 0 1.25rem; height: 80px; }
+}
+
+.header.scrolled {
+  .header-container {
+    height: 80px; // Compact scrolled header
+    @media (max-width: 767px) { height: 72px; }
+  }
 }
 
 /* Logo */
 .logo {
   display: flex;
-  flex-direction: row;
   align-items: center;
-  gap: 0.65rem;
-  line-height: 1;
+  gap: 0.85rem;
   text-decoration: none;
+  transition: transform var(--duration) var(--ease), opacity var(--duration) var(--ease);
 
-  .logo-img {
-    height: 38px;
-    width: 38px;
-    object-fit: contain;
-    border-radius: 50%;
+  &:hover {
+    transform: scale(1.02);
+    
+    .logo-emblem-container {
+      transform: rotate(-5deg) scale(1.05);
+    }
   }
 
-  .logo-text-group {
+  .logo-emblem-container {
     display: flex;
-    flex-direction: column;
-    gap: 0.05rem;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary);
+    transition: transform var(--duration) var(--ease);
+  }
+
+  .logo-emblem {
+    display: block;
+    width: 44px;
+    height: 44px;
+    
+    @media (max-width: 767px) {
+      width: 38px;
+      height: 38px;
+    }
   }
 
   .logo-text {
-    font-family: var(--font-heading);
-    font-size: 1.1rem;
-    font-weight: 800;
-    color: var(--primary);
-    letter-spacing: -0.02em;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    line-height: 1.1;
   }
 
-  .logo-subtext {
-    font-family: var(--font-body);
-    font-size: 0.62rem;
-    font-weight: 700;
+  .logo-brand {
+    font-family: var(--font-heading);
+    font-size: 1.3rem;
+    font-weight: 900;
+    letter-spacing: -0.015em;
     text-transform: uppercase;
-    letter-spacing: 0.2em;
-    color: var(--secondary);
+    color: var(--primary);
+    
+    @media (max-width: 767px) {
+      font-size: 1.1rem;
+    }
+
+    .accent-dot {
+      color: var(--accent);
+      font-size: 1.45rem;
+      line-height: 0;
+      margin-left: 1px;
+    }
+  }
+
+  .logo-desc {
+    font-family: var(--font-body);
+    font-size: 0.65rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.28em;
+    color: var(--accent);
+    margin-top: 0.1rem;
+    
+    @media (max-width: 767px) {
+      font-size: 0.58rem;
+      letter-spacing: 0.24em;
+    }
   }
 }
+
 
 /* Desktop Nav */
 .desktop-nav {

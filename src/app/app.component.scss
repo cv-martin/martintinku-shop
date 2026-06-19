@@ -6,4 +6,9 @@
 
 .main-content {
   flex-grow: 1;
+  padding-top: 96px; /* Desktop Header Height */
+  @media (max-width: 767px) {
+    padding-top: 80px; /* Mobile Header Height */
+  }
 }
+

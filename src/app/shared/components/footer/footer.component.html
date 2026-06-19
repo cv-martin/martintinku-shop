@@ -2,12 +2,31 @@
   <div class="container footer-grid">
     <div class="footer-brand">
       <a routerLink="/" class="logo">
-        <img src="img/logo.png" alt="Headmaster Amma's Logo" class="logo-img">
-        <div class="logo-text-group">
-          <span class="logo-text">Headmaster Amma's</span>
-          <span class="logo-subtext">Kitchen</span>
+        <div class="logo-emblem-container">
+          <svg class="logo-emblem" width="44" height="44" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Outer circular seal frame -->
+            <circle cx="50" cy="50" r="46" class="emblem-ring" stroke="currentColor" stroke-width="3.5" />
+            <circle cx="50" cy="50" r="39" class="emblem-dots" stroke="var(--accent)" stroke-width="1.5" stroke-dasharray="4 4" />
+            
+            <!-- mortar and pestle representing Amma's kitchen -->
+            <path d="M30 52 C30 66, 70 66, 70 52 Z" class="emblem-mortar" fill="currentColor" />
+            <rect x="26" y="47" width="48" height="5" rx="1.5" class="emblem-mortar-rim" fill="currentColor" />
+            <rect x="46" y="24" width="8" height="32" rx="4" class="emblem-pestle" fill="currentColor" transform="rotate(28 50 40)" />
+            
+            <!-- Guntur Chilli representing Andhra spice -->
+            <path d="M26 44 C22 30, 42 22, 56 28 C60 30, 62 34, 57 34 C44 34, 32 38, 29 48 C28 51, 27 49, 26 44 Z" class="emblem-chili" fill="var(--accent)" />
+            <path d="M23 44 C24 46, 26 47, 28 45" class="emblem-stem" stroke="#166534" stroke-width="2" stroke-linecap="round" />
+            
+            <!-- Academic Star representing Headmaster -->
+            <polygon points="50,11 53,17 60,18 55,23 56,29 50,26 44,29 45,23 40,18 47,17" class="emblem-star" fill="var(--accent)" />
+          </svg>
+        </div>
+        <div class="logo-text">
+          <span class="logo-brand">HEADMASTER AMMA'S<span class="accent-dot">.</span></span>
+          <span class="logo-desc">KITCHEN</span>
         </div>
       </a>
+
       <p class="brand-pitch">
         Authentic, small-batch Andhra pickles and podis, crafted with teaching-standard discipline and the finest hand-selected spices.
       </p>
