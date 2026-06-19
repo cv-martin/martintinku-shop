@@ -97,6 +97,27 @@
   margin-top: 0.2rem;
 }
 
+.error-banner {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: #fff5f5;
+  border: 1px solid #f5c6c6;
+  border-radius: var(--radius-sm);
+  color: #c62828;
+  font-size: 0.85rem;
+  font-weight: 500;
+  padding: 0.75rem 1rem;
+  margin-top: 0.75rem;
+
+  .error-banner-icon {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    color: #c62828;
+  }
+}
+
 /* Product Checklist */
 .product-checklist-grid {
   display: grid;
@@ -312,5 +333,4 @@
   @media (min-width: 576px) { flex-direction: row; }
 
   .btn { @media (max-width: 575px) { width: 100%; } }
-  .wa-btn-icon { width: 17px; height: 17px; }
 }

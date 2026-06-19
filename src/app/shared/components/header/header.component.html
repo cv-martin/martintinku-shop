@@ -1,33 +1,23 @@
 <header class="header" [class.scrolled]="isScrolled">
   <div class="header-container">
     <a routerLink="/" class="logo" (click)="closeMobileMenu()">
-      <div class="logo-emblem-container">
-        <svg class="logo-emblem" width="44" height="44" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <!-- Outer circular seal frame -->
-          <circle cx="50" cy="50" r="46" class="emblem-ring" stroke="currentColor" stroke-width="3.5" />
-          <circle cx="50" cy="50" r="39" class="emblem-dots" stroke="var(--accent)" stroke-width="1.5" stroke-dasharray="4 4" />
-          
-          <!-- mortar and pestle representing Amma's kitchen -->
-          <!-- Mortar bowl -->
-          <path d="M30 52 C30 66, 70 66, 70 52 Z" class="emblem-mortar" fill="currentColor" />
-          <!-- Mortar rim -->
-          <rect x="26" y="47" width="48" height="5" rx="1.5" class="emblem-mortar-rim" fill="currentColor" />
-          
-          <!-- Diagonal Pestle representing grinding -->
-          <rect x="46" y="24" width="8" height="32" rx="4" class="emblem-pestle" fill="currentColor" transform="rotate(28 50 40)" />
-          
-          <!-- Guntur Chilli representing Andhra spice -->
-          <path d="M26 44 C22 30, 42 22, 56 28 C60 30, 62 34, 57 34 C44 34, 32 38, 29 48 C28 51, 27 49, 26 44 Z" class="emblem-chili" fill="var(--accent)" />
-          <!-- Chilli stem -->
-          <path d="M23 44 C24 46, 26 47, 28 45" class="emblem-stem" stroke="#166534" stroke-width="2" stroke-linecap="round" />
-          
-          <!-- Academic Star representing Headmaster (strict teaching excellence) -->
-          <polygon points="50,11 53,17 60,18 55,23 56,29 50,26 44,29 45,23 40,18 47,17" class="emblem-star" fill="var(--accent)" />
-        </svg>
-      </div>
+      <!-- Premium Chilli-A Logomark -->
+      <svg class="logo-mark" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <!-- Chilli body -->
+        <path d="M28 48 C16 48 10 38 12 26 C14 15 22 8 30 8 C34 8 36 10 36 10 C36 10 33 12 32 16 C30 20 30 26 32 32 C34 38 36 42 34 46 C32 48 30 48 28 48 Z"
+              fill="#C41E3A"/>
+        <!-- Chilli highlight -->
+        <path d="M22 18 C20 22 19 28 20 34" stroke="rgba(255,255,255,0.25)" stroke-width="2.5" stroke-linecap="round"/>
+        <!-- Stem -->
+        <path d="M30 8 C30 4 33 2 36 3 C34 5 33 7 34 10" fill="#166534"/>
+        <path d="M30 8 C28 5 29 2 32 2" stroke="#166534" stroke-width="1.5" stroke-linecap="round"/>
+        <!-- "A" negative space cut -->
+        <path d="M25 38 L28 24 L31 38 M26.5 33 L29.5 33" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      </svg>
+
       <div class="logo-text">
-        <span class="logo-brand">HEADMASTER AMMA'S<span class="accent-dot">.</span></span>
-        <span class="logo-desc">KITCHEN</span>
+        <span class="logo-brand">HEADMASTER AMMA'S</span>
+        <span class="logo-desc">K I T C H E N</span>
       </div>
     </a>
 

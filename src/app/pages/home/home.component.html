@@ -4,10 +4,10 @@
     <div class="hero-text animate-fade-in">
       <span class="hero-eyebrow">Small-Batch · Handcrafted</span>
       <h1 class="hero-heading">
-        Authentic Andhra<br>Pickles & Podis
+        Authentic Andhra<br>Pickles &amp; Podis
       </h1>
       <p class="hero-desc">
-        Handcrafted by a retired school headmaster. Stone-ground, sun-dried, and made with zero compromises. 
+        Handcrafted by a retired school headmaster. Stone-ground, sun-dried, and made with zero compromises.
       </p>
       <div class="regional-wording">
         For Indian families, Telugu communities, students, and spice lovers in Austin and beyond.
@@ -40,63 +40,20 @@
   </div>
 </div>
 
-<!-- PRODUCT CATEGORIES -->
-<section class="section section-categories">
-  <div class="container">
-    <div class="section-title">
-      <span class="eyebrow-label">Our Range</span>
-      <h2>Product Categories</h2>
-      <p>Explore Amma's signature formulations across five distinct culinary traditions</p>
-    </div>
-    <div class="categories-grid">
-      <div class="category-card" routerLink="/products" [queryParams]="{ category: 'Pickles' }">
-        <div class="cat-icon">🌶️</div>
-        <h3>Pickles</h3>
-        <p>Tangy, traditional vegetable pickles preserved in cold-pressed sesame oil.</p>
-        <span class="cat-link">Explore &rarr;</span>
-      </div>
-      <div class="category-card" routerLink="/products" [queryParams]="{ category: 'Pickles' }">
-        <div class="cat-icon">🍤</div>
-        <h3>Non-Veg Pickles</h3>
-        <p>Premium coastal-style non-veg pickles, carefully cured and spiced.</p>
-        <span class="cat-link">Explore &rarr;</span>
-      </div>
-      <div class="category-card" routerLink="/products" [queryParams]="{ category: 'Podis' }">
-        <div class="cat-icon">🪨</div>
-        <h3>Podis / Spice Powders</h3>
-        <p>Stone-ground roasted lentils and aromatic spices to elevate any meal.</p>
-        <span class="cat-link">Explore &rarr;</span>
-      </div>
-      <div class="category-card" routerLink="/products" [queryParams]="{ category: 'Combos' }">
-        <div class="cat-icon">📦</div>
-        <h3>Combo Boxes</h3>
-        <p>Specially curated collections combining our best-loved pickles and podis.</p>
-        <span class="cat-link">Explore &rarr;</span>
-      </div>
-      <div class="category-card" routerLink="/products">
-        <div class="cat-icon">☀️</div>
-        <h3>Seasonal Specials</h3>
-        <p>Limited batch recipes prepared according to local harvests.</p>
-        <span class="cat-link">Explore &rarr;</span>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- FEATURED PICKLES -->
 <section class="section section-warm">
   <div class="container">
     <div class="section-title">
       <span class="eyebrow-label">Fresh Batches</span>
       <h2>Featured Pickles</h2>
-      <p>Aged to perfection to bring you the rich taste of traditional Andhra households</p>
+      <p>Aged to perfection — the rich taste of traditional Andhra households</p>
     </div>
     <div class="grid-3">
       @for (product of featuredPickles; track product.id) {
         <app-product-card [product]="product"></app-product-card>
       }
     </div>
-    <div style="text-align:center; margin-top:2.5rem;">
+    <div class="section-action">
       <a routerLink="/products" [queryParams]="{ category: 'Pickles' }" class="btn btn-ghost">View All Pickles &rarr;</a>
     </div>
   </div>
@@ -107,7 +64,7 @@
   <div class="container">
     <div class="section-title">
       <span class="eyebrow-label">Heritage Powders</span>
-      <h2>Featured Podis & Spice Powders</h2>
+      <h2>Featured Podis &amp; Spice Powders</h2>
       <p>Stone-ground in small batches to preserve natural oils and intense aromas</p>
     </div>
     <div class="grid-3">
@@ -115,170 +72,72 @@
         <app-product-card [product]="product"></app-product-card>
       }
     </div>
-    <div style="text-align:center; margin-top:2.5rem;">
+    <div class="section-action">
       <a routerLink="/products" [queryParams]="{ category: 'Podis' }" class="btn btn-ghost">View All Podis &rarr;</a>
     </div>
   </div>
 </section>
 
-<!-- COMBO BOXES -->
-<section class="section section-warm">
-  <div class="container">
-    <div class="section-title">
-      <span class="eyebrow-label">Curated Experiences</span>
-      <h2>Signature Combo Boxes</h2>
-      <p>The perfect combination of flavors grouped together for meals and breakfasts</p>
-    </div>
-    <div class="grid-3">
-      @for (product of comboBoxes; track product.id) {
-        <app-product-card [product]="product"></app-product-card>
-      }
-    </div>
-  </div>
-</section>
-
-<!-- BEST WITH / HOW TO EAT -->
+<!-- HOW TO EAT & PAIRINGS -->
 <section class="section section-pairings">
   <div class="container">
     <div class="section-title">
       <span class="eyebrow-label">The Pairing Guide</span>
-      <h2>How to Eat & Pairings</h2>
+      <h2>How to Eat &amp; Pairings</h2>
       <p>Amma's kitchen-tested recommendations to unlock the true potential of each recipe</p>
     </div>
-    <div class="pairings-container">
-      <div class="pairing-row">
-        <div class="pairing-item">
-          <div class="pairing-product"><strong>Gongura Pickle</strong></div>
-          <div class="pairing-arrow">&rarr;</div>
-          <div class="pairing-match">Hot rice + ghee</div>
-        </div>
-        <div class="pairing-item">
-          <div class="pairing-product"><strong>Mango Pickle</strong></div>
-          <div class="pairing-arrow">&rarr;</div>
-          <div class="pairing-match">Curd rice / dosa / plain rice</div>
-        </div>
-        <div class="pairing-item">
-          <div class="pairing-product"><strong>Karampodi</strong></div>
-          <div class="pairing-arrow">&rarr;</div>
-          <div class="pairing-match">Idly + ghee</div>
-        </div>
-        <div class="pairing-item">
-          <div class="pairing-product"><strong>Curry Leaf Podi</strong></div>
-          <div class="pairing-arrow">&rarr;</div>
-          <div class="pairing-match">Rice + sesame oil</div>
-        </div>
-        <div class="pairing-item">
-          <div class="pairing-product"><strong>Prawns Pickle</strong></div>
-          <div class="pairing-arrow">&rarr;</div>
-          <div class="pairing-match">Rice / chapati / dosa</div>
-        </div>
+    <div class="pairings-grid">
+      <div class="pairing-card">
+        <div class="pairing-card-product">🌿 Gongura Pickle</div>
+        <div class="pairing-card-arrow">&rarr;</div>
+        <div class="pairing-card-match">Hot rice + ghee</div>
+      </div>
+      <div class="pairing-card">
+        <div class="pairing-card-product">🥭 Mango Pickle</div>
+        <div class="pairing-card-arrow">&rarr;</div>
+        <div class="pairing-card-match">Curd rice / dosa / plain rice</div>
+      </div>
+      <div class="pairing-card">
+        <div class="pairing-card-product">🌶️ Karampodi</div>
+        <div class="pairing-card-arrow">&rarr;</div>
+        <div class="pairing-card-match">Idly + ghee</div>
+      </div>
+      <div class="pairing-card">
+        <div class="pairing-card-product">🍃 Curry Leaf Podi</div>
+        <div class="pairing-card-arrow">&rarr;</div>
+        <div class="pairing-card-match">Rice + sesame oil</div>
+      </div>
+      <div class="pairing-card">
+        <div class="pairing-card-product">🦐 Prawns Pickle</div>
+        <div class="pairing-card-arrow">&rarr;</div>
+        <div class="pairing-card-match">Rice / chapati / dosa</div>
+      </div>
+      <div class="pairing-card pairing-card-cta">
+        <div class="pairing-cta-text">Want all 12+ pairings?</div>
+        <a routerLink="/pairings" class="btn btn-ghost pairing-cta-btn">Full Guide &rarr;</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- SPICE LEVEL GUIDE -->
-<section class="section section-warm section-spice-guide">
-  <div class="container">
-    <div class="section-title">
-      <span class="eyebrow-label">Flavor Scale</span>
-      <h2>Spice Level Guide</h2>
-      <p>Find your comfort zone on our traditional heat index</p>
-    </div>
-    <div class="spice-guide-grid">
-      <div class="spice-card-guide spice-mild">
-        <div class="spice-level-title">Mild</div>
-        <div class="spice-chillies">🌶️</div>
-        <p class="spice-desc-text">Gentle warmth with heavy focus on flavor and aroma. Suitable for everyone.</p>
-      </div>
-      <div class="spice-card-guide spice-medium">
-        <div class="spice-level-title">Medium</div>
-        <div class="spice-chillies">🌶️🌶️</div>
-        <p class="spice-desc-text">A pleasant tickle of heat. Typical of classic South Indian table powders.</p>
-      </div>
-      <div class="spice-card-guide spice-hot">
-        <div class="spice-level-title">Hot</div>
-        <div class="spice-chillies">🌶️🌶️🌶️</div>
-        <p class="spice-desc-text">Authentic home-style heat. Gives the signature kick without overwhelming.</p>
-      </div>
-      <div class="spice-card-guide spice-extra-hot">
-        <div class="spice-level-title">Extra Hot</div>
-        <div class="spice-chillies">🌶️🌶️🌶️🌶️</div>
-        <p class="spice-desc-text">Guntur chilli standards. Bold, sharp heat that lingers beautifully.</p>
-      </div>
-      <div class="spice-card-guide spice-fire">
-        <div class="spice-level-title">Andhra Fire</div>
-        <div class="spice-chillies">🌶️🌶️🌶️🌶️🌶️</div>
-        <p class="spice-desc-text">For the brave. Traditional high-heat blend prepared to raw classroom discipline.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- BRAND STORYTELLING: AMMA'S STORY -->
+<!-- AMMA'S STORY -->
 <section class="section section-story">
   <div class="container">
     <div class="grid-2">
       <div class="story-image-wrap">
-        <img src="img/amma_family.jpg" alt="Headmaster Amma & Family" class="story-img" style="width: 100%; border-radius: var(--radius-lg); box-shadow: var(--shadow-md); aspect-ratio: 4/3; object-fit: cover;">
+        <img src="img/amma_family.jpg" alt="Headmaster Amma &amp; Family" class="story-img">
       </div>
-      <div class="story-text-brief" style="display: flex; flex-direction: column; gap: 1rem; align-items: flex-start;">
-        <span class="eyebrow-label" style="display: inline-block; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--primary);">Our Philosophy</span>
-        <h2 style="font-size: clamp(1.6rem, 3vw, 2.25rem); line-height: 1.2;">From Headmaster's Desk to Kitchen Counter</h2>
-        <p style="color: var(--text-secondary); margin: 0; line-height: 1.6;">
-          For 30+ years, Amma ran her school with warmth and an iron hand — no shortcuts, no compromises. Today, she applies those same standards of discipline, geometry, and care to every batch of pickles and podis she prepares.
+      <div class="story-text-brief">
+        <span class="eyebrow-label">Our Philosophy</span>
+        <h2>From Headmaster's Desk to Kitchen Counter</h2>
+        <p>
+          For 30+ years, Amma ran her school with warmth and an iron hand — no shortcuts, no compromises. Today she applies those same standards of discipline and care to every batch of pickles and podis she prepares.
         </p>
-        <p style="color: var(--text-muted); font-style: italic; border-left: 3px solid var(--accent); padding-left: 1rem; margin: 0.5rem 0;">
+        <blockquote class="story-quote">
           "If a job is worth doing, it is worth doing perfectly."
-        </p>
-        <a routerLink="/about" class="btn btn-secondary" style="margin-top: 0.5rem;">Read Amma's Story &rarr;</a>
+        </blockquote>
+        <a routerLink="/about" class="btn btn-secondary">Read Amma's Story &rarr;</a>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- LIGHTER SECTIONS ROW (GIFTING, REGIONAL WORDING, TASTE SURVEY) -->
-<section class="section section-warm section-light-row">
-  <div class="container light-row-inner">
-    <!-- Gifting Card -->
-    <div class="light-card gift-card">
-      <div class="light-card-header">
-        <span class="light-icon">🎁</span>
-        <h3>Gifting Amma's Kitchen</h3>
-      </div>
-      <p>Share the taste of home. We offer curated packs for holidays and milestones:</p>
-      <div class="gift-tags">
-        <span>Festival Gift Box</span>
-        <span>Housewarming Gift Box</span>
-        <span>Student Care Package</span>
-        <span>Indian Family Combo Box</span>
-      </div>
-    </div>
-    
-    <!-- Survey CTA -->
-    <div class="light-card survey-card">
-      <div class="light-card-header">
-        <span class="light-icon">📊</span>
-        <h3>Amma's Taste Survey</h3>
-      </div>
-      <p>Help us calibrate the spice ratios and choose upcoming flavors for the next batch!</p>
-      <a routerLink="/preorder" class="btn btn-ghost light-btn">Take Flavor Survey</a>
-    </div>
-  </div>
-</section>
-
-<!-- COMING SOON PRODUCTS -->
-<section class="section section-coming-soon">
-  <div class="container">
-    <div class="section-title">
-      <span class="eyebrow-label">Future Batches</span>
-      <h2>Under Calibration & Coming Soon</h2>
-      <p>Help us prioritize the kitchen schedule by voting for the recipe you want next!</p>
-    </div>
-    <div class="grid-3">
-      @for (product of comingSoonProducts; track product.id) {
-        <app-product-card [product]="product"></app-product-card>
-      }
     </div>
   </div>
 </section>
@@ -295,8 +154,6 @@
         WhatsApp Inquiry
       </a>
     </div>
-    
-    <!-- Compliance Stage Wording -->
     <div class="compliance-stage-warning">
       Products are currently in validation/preorder stage. Availability, shipping, packaging, and regulatory compliance may vary by location.
     </div>

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ProductService } from '../../core/services/product.service';
 import { PreorderService } from '../../core/services/preorder.service';
@@ -9,7 +9,7 @@ import { Product } from '../../core/models/product.model';
 @Component({
   selector: 'app-preorder',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, RouterLink],
   templateUrl: './preorder.component.html',
   styleUrls: ['./preorder.component.scss']
 })
@@ -17,9 +17,10 @@ export class PreorderComponent implements OnInit {
   preorderForm!: FormGroup;
   allProducts: Product[] = [];
   preselectedProductId: string | null = null;
-  
+
   isSubmitted = false;
   isSubmissionSuccess = false;
+  noProductsError = false;
 
   constructor(
     private fb: FormBuilder,
@@ -82,9 +83,10 @@ export class PreorderComponent implements OnInit {
     });
 
     if (selectedProductIds.length === 0) {
-      alert('Please select at least one product to preorder.');
+      this.noProductsError = true;
       return;
     }
+    this.noProductsError = false;
 
     const request = {
       name: formValue.name,
