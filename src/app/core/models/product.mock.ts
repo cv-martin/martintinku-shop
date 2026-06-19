@@ -27,7 +27,8 @@ export const MOCK_PRODUCTS: Product[] = [
     storageInstructions: 'Store in a cool, dry place. Keep the jar tightly sealed. Use a dry spoon.',
     shelfLife: '9 Months',
     allergenWarning: 'Prepared in a kitchen that processes nuts. Contains mustard.',
-    imagePath: 'img/Gemini_Generated_Image_ (26).png'
+    imagePath: 'img/mango_pickle_packaging.jpg',
+    secondaryImagePath: 'img/Gemini_Generated_Image_ (26).png'
   },
   {
     id: 'karampodi',
