@@ -44,8 +44,8 @@
           <div class="method-details">
             <h3>Email Support</h3>
             <p>Write to us for general or shipping inquiries.</p>
-            <a href="mailto:hello@martintinku.com" class="method-link">
-              hello&#64;martintinku.com &rarr;
+            <a href="mailto:jessiejane726@gmail.com" class="method-link">
+              jessiejane726&#64;gmail.com &rarr;
             </a>
           </div>
         </div>
@@ -77,11 +77,20 @@
             <polyline points="20 6 9 17 4 12" />
           </svg>
         </div>
-        <h3>Message Logged!</h3>
+        <h3>Message Ready!</h3>
         <p>
-          Thank you, <strong>{{ contactForm.value.name }}</strong>. We have logged your request and output the details to the console log for inspection.
+          Thank you, <strong>{{ contactForm.value.name }}</strong>. Your inquiry has been prepared. To send this message directly to Amma's email inbox, please click the button below:
         </p>
-        <button (click)="resetForm()" class="btn btn-secondary btn-sm">Send Another Message</button>
+        <div class="success-actions" style="display: flex; flex-direction: column; gap: 1rem; align-items: center; margin-top: 1.5rem; width: 100%;">
+          <a [href]="getEmailMailtoUrl()" class="btn btn-primary" style="width: 100%; text-align: center; display: inline-flex; justify-content: center; align-items: center; gap: 0.5rem;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 16px; height: 16px; vertical-align: middle;">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+              <polyline points="22,6 12,13 2,6" />
+            </svg>
+            <span>Email Message to Amma</span>
+          </a>
+          <button (click)="resetForm()" class="btn btn-secondary btn-sm" style="width: 100%; max-width: 200px;">Send Another Message</button>
+        </div>
       </div>
 
       <!-- Active Form -->

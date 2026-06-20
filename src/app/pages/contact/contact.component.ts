@@ -43,6 +43,19 @@ export class ContactComponent implements OnInit {
     this.isSubmitted = true;
   }
 
+  getEmailMailtoUrl(): string {
+    const val = this.contactForm.value;
+    const subject = encodeURIComponent(`${val.subject} - ${val.name}`);
+    const body = encodeURIComponent(
+      `Hello Amma,\n\nI have a message for you:\n\n` +
+      `Subject: ${val.subject}\n` +
+      `From: ${val.name} (${val.email})\n\n` +
+      `Message:\n${val.message}\n`
+    );
+
+    return `mailto:jessiejane726@gmail.com?subject=${subject}&body=${body}`;
+  }
+
   resetForm(): void {
     this.isSubmitted = false;
     this.contactForm.reset({

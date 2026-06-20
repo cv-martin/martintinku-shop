@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ProductService } from '../../core/services/product.service';
 import { PreorderService } from '../../core/services/preorder.service';
@@ -9,7 +9,7 @@ import { Product } from '../../core/models/product.model';
 @Component({
   selector: 'app-preorder',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, RouterLink],
+  imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './preorder.component.html',
   styleUrls: ['./preorder.component.scss']
 })
@@ -102,6 +102,29 @@ export class PreorderComponent implements OnInit {
       this.isSubmitted = true;
       this.isSubmissionSuccess = success;
     });
+  }
+
+  getEmailMailtoUrl(): string {
+    const val = this.preorderForm.value;
+    const selectedProds = this.allProducts
+      .filter(p => val.productIds[p.id])
+      .map(p => p.name)
+      .join(', ');
+
+    const subject = encodeURIComponent(`Preorder Interest - ${val.name}`);
+    const body = encodeURIComponent(
+      `Hello Amma,\n\nI would like to register my preorder interest with the following details:\n\n` +
+      `- Name: ${val.name}\n` +
+      `- Email: ${val.email}\n` +
+      `- Phone/WhatsApp: ${val.phone}\n` +
+      `- Area: ${val.location}\n` +
+      `- Products: ${selectedProds}\n` +
+      `- Estimated Quantity: ${val.quantityEstimation}\n` +
+      `- Special Requests: ${val.customMessage || 'None'}\n\n` +
+      `Thank you!`
+    );
+
+    return `mailto:jessiejane726@gmail.com?subject=${subject}&body=${body}`;
   }
 
   resetForm(): void {

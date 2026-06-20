@@ -29,20 +29,17 @@
       </div>
 
       <div class="next-steps-box">
-        <h4>What Happens Next?</h4>
+        <h4>Send Preorder via Email</h4>
         <p>
-          We are currently checking local demand and location details. Once the ingredients are procured and Amma bottles the batch, we will message you to confirm local Austin pickup coordinates.
-        </p>
-        <p class="urgent-text">
-          Want to ask Amma a question directly? Click below to send an instant message:
+          Your preorder has been registered locally. To ensure Amma receives your request immediately in her inbox, please click below to send the pre-filled email details directly to <strong>jessiejane726&#64;gmail.com</strong>:
         </p>
         <div class="success-actions">
-          <a routerLink="/contact" class="btn btn-primary">
+          <a [href]="getEmailMailtoUrl()" class="btn btn-primary">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 16px; height: 16px; margin-right: 8px; vertical-align: middle;">
               <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
               <polyline points="22,6 12,13 2,6" />
             </svg>
-            <span>Send a Message to Amma</span>
+            <span>Email Preorder to Amma</span>
           </a>
           <button (click)="resetForm()" class="btn btn-secondary">Submit Another Request</button>
         </div>
