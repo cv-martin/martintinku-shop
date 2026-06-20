@@ -11,5 +11,5 @@ import { FooterComponent } from './shared/components/footer/footer.component';
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = "Headmaster Amma's Kitchen";
+  title = "Jane's Standard";
 }

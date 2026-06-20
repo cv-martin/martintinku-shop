@@ -133,7 +133,7 @@ export const MOCK_PRODUCTS: Product[] = [
     name: 'Amma’s Signature Box',
     category: 'Combo Boxes',
     shortDescription: 'Amma’s ultimate curation: Mango Pickle, Gongura Pickle, Idly Podi, and Curry Leaf Podi.',
-    description: 'The absolute best of Headmaster Amma’s kitchen. This collection features a curated combination of our top two pickles (Mango, Gongura) and top two podis (Idly Podi, Curry Leaf Podi). A complete taste profile covering tangy, fiery, savory, and aromatic flavors.',
+    description: 'The absolute best of Jane\'s Standard. This collection features a curated combination of our top two pickles (Mango, Gongura) and top two podis (Idly Podi, Curry Leaf Podi). A complete taste profile covering tangy, fiery, savory, and aromatic flavors.',
     spiceLevel: 'Hot',
     bestWith: ['Rice', 'Idly', 'Dosa', 'Ghee'],
     ingredients: ['Raw Mangoes', 'Gongura Leaves', 'Curry Leaves', 'Roasted Lentils', 'Garlic', 'Spices'],
