@@ -124,7 +124,7 @@ export class PreorderComponent implements OnInit {
       `Thank you!`
     );
 
-    return `mailto:jessiejane726@gmail.com?subject=${subject}&body=${body}`;
+    return `mailto:krupamma1011@gmail.com?subject=${subject}&body=${body}`;
   }
 
   resetForm(): void {
