@@ -52,6 +52,10 @@
     border-radius: var(--radius-sm);
     cursor: pointer;
     transition: all var(--duration) var(--ease);
+    min-height: 38px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 
     &:hover { border-color: var(--primary); color: var(--primary); }
 
@@ -59,6 +63,12 @@
       background: var(--primary);
       border-color: var(--primary);
       color: #fff;
+    }
+
+    @media (max-width: 767px) {
+      padding: 0.55rem 1.2rem;
+      font-size: 0.9rem;
+      min-height: 44px; /* Better mobile tap target height */
     }
   }
 }

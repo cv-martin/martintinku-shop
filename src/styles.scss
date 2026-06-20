@@ -188,9 +188,37 @@ a {
   transition: all var(--duration) var(--ease);
   white-space: nowrap;
 
+  /* Touch-friendly minimum height for all screens */
+  min-height: 48px;
+
   &:focus-visible {
     outline: 2px solid var(--primary);
     outline-offset: 3px;
+  }
+
+  @media (max-width: 767px) {
+    padding: 0.85rem 1.5rem;
+    font-size: 0.95rem;
+  }
+}
+
+/* Mobile Button Layout Stacks */
+@media (max-width: 575px) {
+  .hero-actions,
+  .cta-actions,
+  .form-actions,
+  .success-actions,
+  .details-actions {
+    flex-direction: column !important;
+    width: 100% !important;
+    align-items: stretch !important;
+    gap: 0.75rem !important;
+
+    .btn, a, button {
+      width: 100% !important;
+      max-width: 100% !important;
+      justify-content: center !important;
+    }
   }
 }
 
